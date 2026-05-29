@@ -1,0 +1,9 @@
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/hospital.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/edit_cache.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/rebuild_cache.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/list_install_components.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/install.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/install/local.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/install/strip.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/hospital_autogen_timestamp_deps.dir
+/home/bro/my creations/hospital-remake/hospital/CMakeFiles/hospital_autogen.dir

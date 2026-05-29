@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <QVBoxLayout>
+#include <QWidget>
+#include <QPushButton>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
