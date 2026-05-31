@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-
+//was going to use a back_1 back_2 back_3 button with the same repeated fonction sending the user to page 2 (main menu) but i discovered
     ui->setupUi(this);
     setFixedSize(1185,600);
     auto* layout = new QVBoxLayout();
@@ -14,10 +14,24 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->register_but,&QPushButton::clicked,this,[this]() { switchpg(1); });
     connect(ui->regist_but,&QPushButton::clicked,this,[this]() { switchpg(0); });
     connect(ui->logout,&QPushButton::clicked,this,[this]() { switchpg(0); });
+
+
     connect(ui->add_d,&QPushButton::clicked,this,[this]() { switchpg(3); });
     connect(ui->back,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->add_n,&QPushButton::clicked,this,[this]() { switchpg(4); });
     connect(ui->back_2,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->add_p,&QPushButton::clicked,this,[this]() { switchpg(5); });
+    connect(ui->back_5,&QPushButton::clicked,this,[this]() { switchpg(2); });
+
+
+
+
+    connect(ui->del_d,&QPushButton::clicked,this,[this]() { switchpg(6); });
+    connect(ui->del_n,&QPushButton::clicked,this,[this]() { switchpg(7); });
+    connect(ui->del_p,&QPushButton::clicked,this,[this]() { switchpg(8); });
+    connect(ui->back_3,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->back_4,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->back_6,&QPushButton::clicked,this,[this]() { switchpg(2); });
 
     ui->centralwidget->setLayout(layout);
 }
