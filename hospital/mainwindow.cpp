@@ -16,12 +16,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->logout,&QPushButton::clicked,this,[this]() { switchpg(0); });
 
 
+
     connect(ui->add_d,&QPushButton::clicked,this,[this]() { switchpg(3); });
-    connect(ui->back,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->add_n,&QPushButton::clicked,this,[this]() { switchpg(4); });
-    connect(ui->back_2,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->add_p,&QPushButton::clicked,this,[this]() { switchpg(5); });
     connect(ui->back_5,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->back_2,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->back,&QPushButton::clicked,this,[this]() { switchpg(2); });
+
+
 
 
 
@@ -32,6 +35,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->back_3,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->back_4,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->back_6,&QPushButton::clicked,this,[this]() { switchpg(2); });
+
+
+
+    connect(ui->ld,&QPushButton::clicked,this,[this]() { switchpg(9); });
+    connect(ui->ln,&QPushButton::clicked,this,[this]() { switchpg(10); });
+    connect(ui->lp,&QPushButton::clicked,this,[this]() { switchpg(11); });
+    connect(ui->back_7,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->back_8,&QPushButton::clicked,this,[this]() { switchpg(2); });
+    connect(ui->back_9,&QPushButton::clicked,this,[this]() { switchpg(2); });
+
+
+    connect(ui->ld,&QPushButton::clicked,this,[this]() { switchpg(9); });
+
+
+
+
+
 
     ui->centralwidget->setLayout(layout);
 }
