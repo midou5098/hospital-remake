@@ -21,5 +21,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void switchpg(int to);
 };
+
+
+
 #endif // MAINWINDOW_H
