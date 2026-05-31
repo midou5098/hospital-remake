@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pages->setCurrentWidget(ui->login);
     connect(ui->login_button,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->register_but,&QPushButton::clicked,this,[this]() { switchpg(1); });
-
-
+    connect(ui->regist_but,&QPushButton::clicked,this,[this]() { switchpg(0); });
+    connect(ui->logout,&QPushButton::clicked,this,[this]() { switchpg(0); });
     ui->centralwidget->setLayout(layout);
 }
 // the layout : 0=login screen,1 register,2 main menu,3 is used for the nurse section(31,32,33 just like the old systems) ,4 for the doctors , and 5 for the patients , and -1 for the listing page
