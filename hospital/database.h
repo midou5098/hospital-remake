@@ -7,9 +7,9 @@ private:
     sqlite3* db;
 public:
     bool opening(void);
-    bool search_doctor(int id,bool& found);
-    bool search_nurse(int id,bool& found);
-    bool search_patient(int id,bool& found);
+    doctor search_doctor(int id,bool& found);
+    nurse search_nurse(int id,bool& found);
+    patient search_patient(int id,bool& found);
 
 
     bool remove_doctor(int id);
