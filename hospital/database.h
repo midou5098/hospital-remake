@@ -31,6 +31,9 @@ public:
     bool add_nurse(patient patient);
     bool add_patient(patient patient);
 
+    bool transfer_nurses(int old,int newi);
+    bool transfer_patients(int old,int newi);
+
 
 
 

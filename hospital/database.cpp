@@ -1,12 +1,97 @@
 #include "classes.h"
 #include "database.h"
 #include "libraries.h"
-bool database::remove(std::string s){
+bool database::remove_doctor(int id){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql="DELETE FROM banks WHERE name=?";
+    sql="DELETE FROM doctors WHERE id=?";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    sqlite3_bind_text(stmt,1,s.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,1,id);
+    int res=sqlite3_step(stmt);
+    if(res!=0){
+        sqlite3_finalize(stmt);
+        return true;
+
+    }else {
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+}
+
+bool database::transfer_nurses(int old,int newi){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="UPDATE nurses SET supervisor=? WHERE supervisor=?";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,newi);
+    sqlite3_bind_int(stmt,2,old);
+    if(sqlite3_step(stmt)==SQLITE_DONE){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return true;
+    }
+
+
+}
+bool database::transfer_patients(int old,int newi){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="UPDATE patients SET nurse=? WHERE nurse=?";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,newi);
+    sqlite3_bind_int(stmt,2,old);
+    if(sqlite3_step(stmt)==SQLITE_DONE){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return true;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+bool database::remove_nurse(int id){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="DELETE FROM nurses WHERE id=?";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
     int res=sqlite3_step(stmt);
     if(res!=0){
         sqlite3_finalize(stmt);
@@ -20,7 +105,23 @@ bool database::remove(std::string s){
 }
 
 
+bool database::remove_patient(int id){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="DELETE FROM patients WHERE id=?";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    int res=sqlite3_step(stmt);
+    if(res!=0){
+        sqlite3_finalize(stmt);
+        return true;
 
+    }else {
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+}
 
 
 
@@ -79,10 +180,10 @@ int database::add(bank nb){
     return 1;
 }
 
-bool database::search(std::string name,bool& found,bank& banki){
+bool database::search(int id,bool& found){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql="SELECT * FROM BANKS WHERE name = ? ";
+    sql="SELECT * FROM BANKS WHERE id = ? ";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,name.c_str(),-1,SQLITE_STATIC);
     if(sqlite3_step(stmt)==SQLITE_ROW){
