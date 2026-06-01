@@ -21,6 +21,11 @@ public:
     bool modify_nurse(int id,patient modified_patient);
     bool modify_patient(int id,patient modified_patient);
 
+    int count_nurses(int id);
+    int count_patients(int id);
+    bool update(void);
+
+
 
     std::vector<doctor> list_doctors(int id);
     std::vector<nurse> list_nurses(int id);

@@ -235,7 +235,6 @@ bool database::add_patient(patient patient){
     sqlite3_bind_text(stmt,5,patient.state.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 6, patient.payment);
     sqlite3_bind_int(stmt, 7, patient.nurse);
-
     int result = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     if (result != SQLITE_DONE) {
@@ -414,6 +413,55 @@ std::vector<patient> database::list_patients(int id){
 
 
 
+//===================counting
+
+int database::count_nurses(int id){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="SELECT COUNT(*) FROM nurses WHERE supervisor=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        return sqlite3_column_int(stmt,0);
+    }else{
+        return -1;
+    }
+}
+
+int database::count_patients(int id){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="SELECT COUNT(*) FROM patients WHERE nurse=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        return sqlite3_column_int(stmt,0);
+    }else{
+        return -1;
+    }
+}
+
+//============================modifying
+
+
+//changeable : name,age,sex,level,monthleft
+bool database::modify_doctor(int id,doctor newd){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="UPDATE doctors SET (name=?,age=?,sex=?,level=?,months_left=?) WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_text(stmt,1,newd.name.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,2,newd.age);
+    sqlite3_bind_text(stmt,3,newd.sex.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_text(stmt,4,newd.level.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,5,newd.months_left);
+    sqlite3_bind_int(stmt,6,id);
+    if(sqlite3_step(stmt)!=0){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
 
 
 
@@ -428,11 +476,6 @@ std::vector<patient> database::list_patients(int id){
 
 
 
-
-
-
-std::vector<nurse> list_nurse(int id);
-std::vector<patient> list_patient(int id);
 
 
 
