@@ -7,7 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <nfd/nfd.h>
-
+#include <vector>
 
 
 #endif // LIBRARIES_H
