@@ -22,9 +22,9 @@ public:
     bool modify_patient(int id,patient modified_patient);
 
 
-    std::vector<doctor> list_doctor(int id);
-    std::vector<nurse> list_nurse(int id);
-    std::vector<patient> list_patient(int id);
+    std::vector<doctor> list_doctors(int id);
+    std::vector<nurse> list_nurses(int id);
+    std::vector<patient> list_patients(int id);
 
 
     bool add_doctor(doctor doctor);

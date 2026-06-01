@@ -9,6 +9,7 @@ public:
     std::string level;
     std::string sex;
     int months_left;
+    int nurse_count;
 };
 
 class nurse{
@@ -19,6 +20,7 @@ class nurse{
     int age;
     std::string sex;
     int supervisor;
+    int patients_count;
 };
 
 
