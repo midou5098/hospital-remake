@@ -1,9 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <QVBoxLayout>
-#include <QWidget>
-#include <QPushButton>
+
 #include <QMainWindow>
+#include <QPushButton>
+#include <QButtonGroup>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,7 +24,5 @@ private:
     Ui::MainWindow *ui;
     void switchpg(int to);
 };
-
-
 
 #endif // MAINWINDOW_H

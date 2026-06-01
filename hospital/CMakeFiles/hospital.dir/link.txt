@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/hospital.dir/link.d CMakeFiles/hospital.dir/hospital_autogen/mocs_compilation.cpp.o CMakeFiles/hospital.dir/main.cpp.o CMakeFiles/hospital.dir/mainwindow.cpp.o -o hospital  /usr/lib/libQt6Widgets.so.6.11.1 /usr/lib/libQt6Gui.so.6.11.1 /usr/lib/libGLX.so /usr/lib/libOpenGL.so /usr/lib/libQt6Core.so.6.11.1

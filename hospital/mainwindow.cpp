@@ -1,53 +1,50 @@
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-//was going to use a back_1 back_2 back_3 button with the same repeated fonction sending the user to page 2 (main menu) but i discovered
+//i was going to use a back_1 back_2 back_3 etc  buttons with the same repeated fonction and connection for 16 times to send the user to page 2 (main menu) but i discovered that i can group the buttons and use findchild
     ui->setupUi(this);
+    QButtonGroup *backbuts= new QButtonGroup(this);
+    for(int i=1;i<16;i++){
+        QString name=QString("back_%1").arg(i);
+        QPushButton *button=this->findChild<QPushButton*>(name);
+        if(button){
+            backbuts->addButton(button);
+        }
+    }
     setFixedSize(1185,600);
     auto* layout = new QVBoxLayout();
     ui->pages->setCurrentWidget(ui->login);
+
     connect(ui->login_button,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->register_but,&QPushButton::clicked,this,[this]() { switchpg(1); });
     connect(ui->regist_but,&QPushButton::clicked,this,[this]() { switchpg(0); });
     connect(ui->logout,&QPushButton::clicked,this,[this]() { switchpg(0); });
 
-
-
     connect(ui->add_d,&QPushButton::clicked,this,[this]() { switchpg(3); });
     connect(ui->add_n,&QPushButton::clicked,this,[this]() { switchpg(4); });
     connect(ui->add_p,&QPushButton::clicked,this,[this]() { switchpg(5); });
-    connect(ui->back_5,&QPushButton::clicked,this,[this]() { switchpg(2); });
-    connect(ui->back_2,&QPushButton::clicked,this,[this]() { switchpg(2); });
-    connect(ui->back,&QPushButton::clicked,this,[this]() { switchpg(2); });
-
-
-
-
-
 
     connect(ui->del_d,&QPushButton::clicked,this,[this]() { switchpg(6); });
     connect(ui->del_n,&QPushButton::clicked,this,[this]() { switchpg(7); });
     connect(ui->del_p,&QPushButton::clicked,this,[this]() { switchpg(8); });
-    connect(ui->back_3,&QPushButton::clicked,this,[this]() { switchpg(2); });
-    connect(ui->back_4,&QPushButton::clicked,this,[this]() { switchpg(2); });
-    connect(ui->back_6,&QPushButton::clicked,this,[this]() { switchpg(2); });
-
-
 
     connect(ui->ld,&QPushButton::clicked,this,[this]() { switchpg(9); });
     connect(ui->ln,&QPushButton::clicked,this,[this]() { switchpg(10); });
     connect(ui->lp,&QPushButton::clicked,this,[this]() { switchpg(11); });
-    connect(ui->back_7,&QPushButton::clicked,this,[this]() { switchpg(2); });
-    connect(ui->back_8,&QPushButton::clicked,this,[this]() { switchpg(2); });
-    connect(ui->back_9,&QPushButton::clicked,this,[this]() { switchpg(2); });
 
+    connect(ui->md,&QPushButton::clicked,this,[this]() { switchpg(12); });
+    connect(ui->mn,&QPushButton::clicked,this,[this]() { switchpg(13); });
+    connect(ui->mp,&QPushButton::clicked,this,[this]() { switchpg(14); });
 
-    connect(ui->ld,&QPushButton::clicked,this,[this]() { switchpg(9); });
+    connect(ui->sd,&QPushButton::clicked,this,[this]() { switchpg(15); });
+    connect(ui->sn,&QPushButton::clicked,this,[this]() { switchpg(16); });
+    connect(ui->sp,&QPushButton::clicked,this,[this]() { switchpg(17); });
 
+    connect(backbuts,&QButtonGroup::buttonClicked,this,[this]() {switchpg(2);});
 
 
 
