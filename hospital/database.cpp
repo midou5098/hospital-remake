@@ -1,6 +1,21 @@
 #include "classes.h"
 #include "database.h"
 #include "libraries.h"
+
+
+
+
+
+
+
+
+
+
+
+// here is the section of the removing focntions , as i said earlier each class got its own fonction
+
+
+
 bool database::remove_doctor(int id){
     sqlite3_stmt* stmt;
     const char* sql;
@@ -18,6 +33,54 @@ bool database::remove_doctor(int id){
     }
 
 }
+
+
+bool database::remove_nurse(int id){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="DELETE FROM nurses WHERE id=?";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    int res=sqlite3_step(stmt);
+    if(res!=0){
+        sqlite3_finalize(stmt);
+        return true;
+
+    }else {
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+}
+
+
+bool database::remove_patient(int id){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="DELETE FROM patients WHERE id=?";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    int res=sqlite3_step(stmt);
+    if(res!=0){
+        sqlite3_finalize(stmt);
+        return true;
+
+    }else {
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+}
+
+
+
+
+
+
+
+
+//                   =================helpers====================
+
 
 bool database::transfer_nurses(int old,int newi){
     sqlite3_stmt* stmt;
@@ -86,48 +149,13 @@ bool database::transfer_patients(int old,int newi){
 
 
 
-bool database::remove_nurse(int id){
-    sqlite3_stmt* stmt;
-    const char* sql;
-    sql="DELETE FROM nurses WHERE id=?";
-    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    sqlite3_bind_int(stmt,1,id);
-    int res=sqlite3_step(stmt);
-    if(res!=0){
-        sqlite3_finalize(stmt);
-        return true;
-
-    }else {
-        sqlite3_finalize(stmt);
-        return false;
-    }
-
-}
-
-
-bool database::remove_patient(int id){
-    sqlite3_stmt* stmt;
-    const char* sql;
-    sql="DELETE FROM patients WHERE id=?";
-    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    sqlite3_bind_int(stmt,1,id);
-    int res=sqlite3_step(stmt);
-    if(res!=0){
-        sqlite3_finalize(stmt);
-        return true;
-
-    }else {
-        sqlite3_finalize(stmt);
-        return false;
-    }
-
-}
 
 
 
 
 
 
+//repo seemed big and frustrating at first but then i aknowldged it being just a big backend
 bool database::opening(void){
 
 
@@ -157,11 +185,11 @@ bool database::opening(void){
 
 
 
-
+ //    ================addings==================
 bool database::add_doctor(doctor doctor){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql = "INSERT INTO banks (name, age, level, sex, months_left) VALUES (? , ?, ? , ?, ?);";
+    sql = "INSERT INTO doctors (name, age, level, sex, months_left) VALUES (? , ?, ? , ?, ?);";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,doctor.name.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 2, doctor.age);
@@ -171,10 +199,76 @@ bool database::add_doctor(doctor doctor){
     int result = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     if (result != SQLITE_DONE) {
-        return -1;
+        return false;
     }
-    return 1;
+    return true;
 }
+
+
+bool database::add_nurse(nurse nurse){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql = "INSERT INTO nurses (name, age, supervisor, sex) VALUES (? , ?, ? , ?);";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_text(stmt,1,nurse.name.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 2, nurse.age);
+    sqlite3_bind_int(stmt, 3, nurse.supervisor);
+    sqlite3_bind_text(stmt,4,nurse.sex.c_str(),-1,SQLITE_STATIC);
+    int result = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+    if (result != SQLITE_DONE) {
+        return false;
+    }
+    return true;
+}
+
+
+bool database::add_patient(patient patient){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql = "INSERT INTO patients (name, age, disease, sex,state,payment,nurse) VALUES (? , ?, ? , ?,?,?,?);";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_text(stmt,1,patient.name.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 2, patient.age);
+    sqlite3_bind_int(stmt, 3, patient.disease);
+    sqlite3_bind_text(stmt,4,patient.sex.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_text(stmt,5,patient.state.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 6, patient.payment);
+    sqlite3_bind_int(stmt, 7, patient.nurse);
+
+    int result = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+    if (result != SQLITE_DONE) {
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//======================searching===
+
 
 bool database::search(int id,bool& found){
     sqlite3_stmt* stmt;

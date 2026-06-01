@@ -28,7 +28,7 @@ public:
 
 
     bool add_doctor(doctor doctor);
-    bool add_nurse(patient patient);
+    bool add_nurse(nurse nurse);
     bool add_patient(patient patient);
 
     bool transfer_nurses(int old,int newi);
