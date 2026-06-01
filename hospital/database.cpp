@@ -128,7 +128,7 @@ bool database::remove_patient(int id){
 
 
 
-int database::opening(void){
+bool database::opening(void){
 
 
 
@@ -150,28 +150,24 @@ int database::opening(void){
     if (res!=SQLITE_OK){
         sqlite3_close(db);
         db = nullptr;
-        return 0;
+        return false;
     }
-    return 1;}
-int database::add(bank nb){
+    return true;}
+
+
+
+
+
+bool database::add_doctor(doctor doctor){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql = "INSERT INTO banks (name, type, interest, funds, clients, manager, x, y,lock,sign) VALUES (? , ?, ? , ?, ?, ?, ?, ?,?,?);";
+    sql = "INSERT INTO banks (name, age, level, sex, months_left) VALUES (? , ?, ? , ?, ?);";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    sqlite3_bind_text(stmt,1,nb.name.c_str(),-1,SQLITE_STATIC);
-    sqlite3_bind_int(stmt, 2, nb.type);
-    sqlite3_bind_int(stmt, 3, nb.inter);
-    sqlite3_bind_int(stmt, 4, nb.funds);
-    sqlite3_bind_int(stmt, 5, nb.clients);
-    sqlite3_bind_int(stmt, 6, nb.manager);
-    sqlite3_bind_double(stmt, 7, nb.x);
-    sqlite3_bind_double(stmt, 8, nb.y);
-    if(nb.locked==true){
-        sqlite3_bind_int(stmt, 9, 1);
-    }else{
-        sqlite3_bind_int(stmt, 9, -1);
-    }
-    sqlite3_bind_text(stmt,10,nb.sign.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_text(stmt,1,doctor.name.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 2, doctor.age);
+    sqlite3_bind_text(stmt,3,doctor.level.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_text(stmt,4,doctor.sex.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 5, doctor.months_left);
     int result = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     if (result != SQLITE_DONE) {

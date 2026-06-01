@@ -2,6 +2,7 @@
 #define CLASSES_H
 #include "libraries.h"
 class doctor{
+public:
     int id;
     std::string name;
     int age;
@@ -11,6 +12,8 @@ class doctor{
 };
 
 class nurse{
+    public:
+
     int id;
     std::string name;
     int age;
@@ -21,6 +24,7 @@ class nurse{
 
 
 class patient{
+    public:
     int id;
     std::string name;
     int age;
@@ -32,6 +36,7 @@ class patient{
 };
 
 class disease{
+    public:
     int id;
     std::string name;
     std::string description;
