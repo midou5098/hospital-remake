@@ -465,6 +465,48 @@ bool database::modify_doctor(int id,doctor newd){
 
 
 
+//changeable : name,age,sex,supervisor
+bool database::modify_nurse(int id,nurse newd){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="UPDATE nurses SET (name=?,age=?,sex=?,level=?,supervisor=?) WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_text(stmt,1,newd.name.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,2,newd.age);
+    sqlite3_bind_text(stmt,3,newd.sex.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,4,newd.supervisor);
+    sqlite3_bind_int(stmt,5,id);
+    if(sqlite3_step(stmt)!=0){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
+
+
+//changeable : name,age,sex,state,payment,nurse
+bool database::modify_patient(int id,patient newd){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    sql="UPDATE patients SET (name=?,age=?,sex=?,state=?,payment=?,nurse=?) WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_text(stmt,1,newd.name.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,2,newd.age);
+    sqlite3_bind_text(stmt,3,newd.sex.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_text(stmt,4,newd.state.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,5,newd.payment),
+    sqlite3_bind_int(stmt,6,newd.nurse);
+    sqlite3_bind_int(stmt,7,id);
+    if(sqlite3_step(stmt)!=0){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
 
 
 

@@ -18,7 +18,7 @@ public:
 
 
     bool modify_doctor(int id,doctor modified_doctor);
-    bool modify_nurse(int id,patient modified_patient);
+    bool modify_nurse(int id,nurse modified_nurse);
     bool modify_patient(int id,patient modified_patient);
 
     int count_nurses(int id);
