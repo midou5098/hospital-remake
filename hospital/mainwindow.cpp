@@ -1,12 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(database dbo,QWidget *parent)
+MainWindow::MainWindow(database& dbo,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),db(dbo)
 {
 //i was going to use a back_1 back_2 back_3 etc  buttons with the same repeated fonction and connection for 16 times to send the user to page 2 (main menu) but i discovered that i can group the buttons and use findchild
-    db=dbo;
     ui->setupUi(this);
     QButtonGroup *backbuts= new QButtonGroup(this);
     QList<QLabel*> msgs;
@@ -28,7 +27,6 @@ MainWindow::MainWindow(database dbo,QWidget *parent)
     auto* layout = new QVBoxLayout();
     ui->pages->setCurrentWidget(ui->login);
 //<=============================connect of buttons========================>
-    connect(ui->login_button,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->register_but,&QPushButton::clicked,this,[this]() { switchpg(1); });
     connect(ui->regist_but,&QPushButton::clicked,this,[this]() { switchpg(0); });
     connect(ui->logout,&QPushButton::clicked,this,[this]() { switchpg(0); });

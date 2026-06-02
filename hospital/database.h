@@ -6,6 +6,7 @@ class database{
 private:
     sqlite3* db,*adm;
 public:
+    database();
     bool opening(void);
     doctor search_doctor(int id,bool& found);
     nurse search_nurse(int id,bool& found);
@@ -46,25 +47,6 @@ public:
 
 
 
-
-
-
-
-
-bool database::check(int id){
-    sqlite3_stmt* stmt;
-    const char* sql="SELECT * FROM admin WHERE id=?";
-    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    sqlite3_bind_int(stmt,1,id);
-    if(sqlite3_step(stmt)==SQLITE_ROW){
-        sqlite3_finalize(stmt);
-        return true;
-    }else{
-        sqlite3_finalize(stmt);
-        return false;
-    }
-
-}
 
 
 

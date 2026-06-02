@@ -18,8 +18,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    database db;
-    explicit MainWindow(database dbo,QWidget *parent = nullptr);
+    database& db;
+    explicit MainWindow(database& dbo,QWidget *parent = nullptr);
     ~MainWindow() override;
 
 private:

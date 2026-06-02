@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[])
 {
-
+    database dbb{};
     QApplication a(argc, argv);
 
-    MainWindow w;
+    MainWindow w(dbb);
     w.show();
     return QApplication::exec();
 }

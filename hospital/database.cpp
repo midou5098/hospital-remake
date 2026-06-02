@@ -1,13 +1,41 @@
 #include "classes.h"
 #include "database.h"
 #include "libraries.h"
+#include <QDebug>
+#include <QDir>
+
+
+
+
+database::database(){
+    qDebug() << QDir::currentPath();
+    if(sqlite3_open("/home/bro/'my creations'/hospital-remake/hospital/databases",&adm)==SQLITE_OK){
+        std::cout<<"opened the database";
+    }else{
+        std::cout<<"nah";
+    }
+}
 
 
 
 
 
+bool database::check(int id){
+    sqlite3_stmt* stmt;
+    std::cout<<id;
+    const char* sql="SELECT * FROM admin WHERE id=?;";
+    sqlite3_prepare_v2(adm,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
 
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
 
+}
 
 
 
