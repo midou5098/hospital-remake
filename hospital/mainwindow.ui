@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1161</width>
-    <height>607</height>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -123,6 +123,32 @@
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic;&quot;&gt;password :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="message">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>519</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="message_11">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -243,6 +269,19 @@
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic;&quot;&gt;email : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="message_16">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -533,6 +572,19 @@
        <string>search</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_12">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="add_doctor">
      <widget class="QLineEdit" name="lineEdit_121">
@@ -689,6 +741,19 @@
        <string>back</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_2">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="add_nurse_7">
      <widget class="QLineEdit" name="lineEdit_126">
@@ -820,6 +885,19 @@
         <width>113</width>
         <height>25</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="message_3">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -1024,6 +1102,19 @@
        <string>back</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_4">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="deleting_doctor">
      <widget class="QLabel" name="label_198">
@@ -1111,6 +1202,19 @@
        <string>back</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_5">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="deleting_nurse">
      <widget class="QPushButton" name="pushButton_106">
@@ -1196,6 +1300,19 @@
       </property>
       <property name="text">
        <string>back</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="message_6">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -1301,6 +1418,19 @@
        <string>cured</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_7">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="list_d">
      <widget class="QLabel" name="label_201">
@@ -1379,6 +1509,19 @@
        <string>back</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_8">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="list_n">
      <widget class="QLabel" name="label_208">
@@ -1446,6 +1589,19 @@
         <string>patients</string>
        </property>
       </column>
+     </widget>
+     <widget class="QLabel" name="message_9">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="list_p">
@@ -1524,6 +1680,19 @@
         <string>nurse</string>
        </property>
       </column>
+     </widget>
+     <widget class="QLabel" name="message_10">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="modify_d">
@@ -1747,6 +1916,19 @@
        <string>update</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_13">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="modify_n">
      <widget class="QLabel" name="label_12">
@@ -1944,6 +2126,19 @@
       </property>
       <property name="text">
        <string>update</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="message_14">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -2201,6 +2396,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QLabel" name="message_15">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="search_d">
      <widget class="QLabel" name="label_11">
@@ -2315,6 +2523,19 @@
        <string>back</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_17">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="search_n">
      <widget class="QLabel" name="label_28">
@@ -2418,6 +2639,19 @@
         <string>patients</string>
        </property>
       </column>
+     </widget>
+     <widget class="QLabel" name="message_18">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="search_p">
@@ -2532,6 +2766,19 @@
         <string>nurse</string>
        </property>
       </column>
+     </widget>
+     <widget class="QLabel" name="message_19">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>510</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
    </widget>

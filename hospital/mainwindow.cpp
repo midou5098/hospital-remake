@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 //i was going to use a back_1 back_2 back_3 etc  buttons with the same repeated fonction and connection for 16 times to send the user to page 2 (main menu) but i discovered that i can group the buttons and use findchild
     ui->setupUi(this);
     QButtonGroup *backbuts= new QButtonGroup(this);
+    QList<QLabel*> msgs;
     for(int i=1;i<16;i++){
         QString name=QString("back_%1").arg(i);
         QPushButton *button=this->findChild<QPushButton*>(name);
@@ -15,10 +16,17 @@ MainWindow::MainWindow(QWidget *parent)
             backbuts->addButton(button);
         }
     }
+    for(int i=1;i<20;i++){
+        QString name=QString("message_%1").arg(i);
+        QLabel *lab=this->findChild<QLabel*>(name);
+        if(lab){
+            msgs.append(lab);
+        }
+    }
     setFixedSize(1185,600);
     auto* layout = new QVBoxLayout();
     ui->pages->setCurrentWidget(ui->login);
-
+//<=============================connect of buttons========================>
     connect(ui->login_button,&QPushButton::clicked,this,[this]() { switchpg(2); });
     connect(ui->register_but,&QPushButton::clicked,this,[this]() { switchpg(1); });
     connect(ui->regist_but,&QPushButton::clicked,this,[this]() { switchpg(0); });
@@ -45,6 +53,98 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->sp,&QPushButton::clicked,this,[this]() { switchpg(17); });
 
     connect(backbuts,&QButtonGroup::buttonClicked,this,[this]() {switchpg(2);});
+
+    //<================================== end of buttons mapping=======>
+
+
+    for (QLabel* lab:msgs){
+        lab->setText("test");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
