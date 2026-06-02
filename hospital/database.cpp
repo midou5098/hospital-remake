@@ -21,6 +21,36 @@ bool database::check_super(int id){
     }
 }
 
+bool database::check_nurse(int id){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT * FROM nurses WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
+        return true;
+
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
+
+bool database::check_disease(int id){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT * FROM diseases WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
+        return true;
+
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
+
 
 
 

@@ -135,6 +135,34 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 
 
+//<============================adding patient button ========================>
+    connect(ui->add_patient_but,&QPushButton::clicked,this,[this](){
+        if(ui->add_patient_age->text()=="" || ui->add_patient_name->text()=="" || ui->add_patient_sex->text()=="" || ui->add_patient_dis->text()=="" || ui->add_patient_pay->text()=="" || ui->add_patient_nurse->text()=="" || ui->add_patient_state->text()==""){
+            ui->message_4->setText("pleaase fill all the fields!");
+        }else if(!db.check_nurse(ui->add_patient_nurse->text().toInt())){
+            ui->message_4->setText("not a valid nurse id");
+        }else if(!db.check_disease(ui->add_patient_dis->text().toInt())){
+            ui->message_4->setText("not a valid disease id");
+        }else{
+            patient temp;
+            temp.name=ui->add_patient_name->text().toStdString();
+            temp.disease=ui->add_patient_dis->text().toInt();
+            temp.age=ui->add_patient_age->text().toInt();
+            temp.payment=ui->add_patient_pay->text().toInt();
+            temp.nurse=ui->add_patient_nurse->text().toInt();
+            temp.sex=ui->add_patient_sex->text().toStdString();
+            temp.state=ui->add_patient_state->text().toStdString();
+            if(db.add_patient(temp)){
+                ui->message_4->setText("patient added !");
+            }else{
+                ui->message_4->setText("something went wrong , check your data!");
+            }
+        }});
+
+
+
+
+
 
 
 

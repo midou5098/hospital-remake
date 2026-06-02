@@ -944,7 +944,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;state :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_129">
+     <widget class="QLineEdit" name="add_patient_pay">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -954,7 +954,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_130">
+     <widget class="QLineEdit" name="add_patient_dis">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -990,7 +990,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;nurse :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_131">
+     <widget class="QLineEdit" name="add_patient_age">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1000,7 +1000,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_132">
+     <widget class="QLineEdit" name="add_patient_sex">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1010,7 +1010,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_133">
+     <widget class="QLineEdit" name="add_patient_state">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1059,7 +1059,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;payment :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_134">
+     <widget class="QLineEdit" name="add_patient_name">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1082,7 +1082,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_104">
+     <widget class="QPushButton" name="add_patient_but">
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -1108,7 +1108,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:700;&quot;&gt;adding a patient&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_135">
+     <widget class="QLineEdit" name="add_patient_nurse">
       <property name="geometry">
        <rect>
         <x>150</x>

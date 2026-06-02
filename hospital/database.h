@@ -11,6 +11,9 @@ public:
     database();
 
     bool check_super(int id);
+    bool check_nurse(int id);
+    bool check_disease(int id);
+
 
 
 
