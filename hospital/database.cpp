@@ -37,11 +37,11 @@ bool database::check(int id){
 
 bool database::registr(int id,std::string psswd){
     sqlite3_stmt* stmt;
-    const char* sql="INSERT INTO admin (id,passwd) VALUES (?,'?');";
-    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    const char* sql="INSERT INTO admin (id,passwd) VALUES (?,?);";
+    sqlite3_prepare_v2(adm,sql,-1,&stmt,nullptr);
     sqlite3_bind_int(stmt,1,id);
     sqlite3_bind_text(stmt,2,psswd.c_str(),-1,SQLITE_STATIC);
-    if(sqlite3_step(stmt)!=0){
+    if(sqlite3_step(stmt)==SQLITE_DONE){
         sqlite3_finalize(stmt);
         return true;
     }else{
