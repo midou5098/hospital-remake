@@ -785,7 +785,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="add_nurse_7">
-     <widget class="QLineEdit" name="lineEdit_126">
+     <widget class="QLineEdit" name="add_nurse_age">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -821,7 +821,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;sex :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_127">
+     <widget class="QLineEdit" name="add_nurse_sex">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -831,7 +831,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_128">
+     <widget class="QLineEdit" name="add_nurse_name">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -867,7 +867,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;age :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_103">
+     <widget class="QPushButton" name="add_nurse_but">
       <property name="geometry">
        <rect>
         <x>530</x>
@@ -906,7 +906,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;supervisor ID :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_136">
+     <widget class="QLineEdit" name="add_nurse_super">
       <property name="geometry">
        <rect>
         <x>180</x>

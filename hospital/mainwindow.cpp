@@ -111,8 +111,25 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 
     });
+//  <============================ add nurse buttton===========-------------->
 
-
+    connect(ui->add_nurse_but,&QPushButton::clicked,this,[this](){
+        if(ui->add_nurse_age->text()=="" || ui->add_nurse_name->text()=="" || ui->add_nurse_sex->text()=="" || ui->add_nurse_super->text()==""){
+            ui->message_3->setText("pleaase fill all the fields!");
+        }else if(!db.check_super(ui->add_nurse_super->text().toInt())){
+            ui->message_3->setText("not a valid supervisor id");
+        }else{
+            nurse temp;
+            temp.name=ui->add_nurse_name->text().toStdString();
+            temp.age=ui->add_nurse_age->text().toInt();
+            temp.supervisor=ui->add_nurse_super->text().toInt();
+            temp.sex=ui->add_nurse_sex->text().toStdString();
+            if(db.add_nurse(temp)){
+                ui->message_3->setText("nurse added !");
+            }else{
+                ui->message_3->setText("something went wrong , check your data!");
+            }
+        }});
 
 
 

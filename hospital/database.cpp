@@ -6,6 +6,25 @@
 
 
 
+bool database::check_super(int id){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT * FROM doctors WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
+        return true;
+
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
+
+
+
+
+
 
 database::database(){
     qDebug() << QDir::currentPath();
@@ -255,18 +274,20 @@ bool database::add_doctor(doctor doctor){
 bool database::add_nurse(nurse nurse){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql = "INSERT INTO nurses (name, age, supervisor, sex) VALUES (? , ?, ? , ?);";
+    sql = "INSERT INTO nurses (name, age, supervisor, sex,patients_count) VALUES (? , ?, ? , ?,?);";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,nurse.name.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 2, nurse.age);
     sqlite3_bind_int(stmt, 3, nurse.supervisor);
     sqlite3_bind_text(stmt,4,nurse.sex.c_str(),-1,SQLITE_STATIC);
-    int result = sqlite3_step(stmt);
-    sqlite3_finalize(stmt);
-    if (result != SQLITE_DONE) {
-        return false;
+    sqlite3_bind_int(stmt, 5, 0);
+
+    if (sqlite3_step(stmt)==SQLITE_DONE) {
+        sqlite3_finalize(stmt);
+        return true;
     }
-    return true;
+    sqlite3_finalize(stmt);
+    return false;
 }
 
 

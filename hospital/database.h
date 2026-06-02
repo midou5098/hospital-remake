@@ -9,6 +9,11 @@ private:
 public:
     bool pulled=false;
     database();
+
+    bool check_super(int id);
+
+
+
     bool opening(void);
     bool check(int id,std::string pass);
     bool registr(int id,std::string passwd,std::string gmail);
