@@ -8,10 +8,16 @@ private:
 public:
     database();
     bool opening(void);
+    bool check(int id);
+    bool registr(int id,std::string passwd);
+
+
+
+
     doctor search_doctor(int id,bool& found);
     nurse search_nurse(int id,bool& found);
     patient search_patient(int id,bool& found);
-    bool check(int id);
+
 
     bool remove_doctor(int id);
     bool remove_nurse(int id);
@@ -39,6 +45,7 @@ public:
 
     bool transfer_nurses(int old,int newi);
     bool transfer_patients(int old,int newi);
+
 
 
 

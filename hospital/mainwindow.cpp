@@ -28,7 +28,6 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     ui->pages->setCurrentWidget(ui->login);
 //<=============================connect of buttons========================>
     connect(ui->register_but,&QPushButton::clicked,this,[this]() { switchpg(1); });
-    connect(ui->regist_but,&QPushButton::clicked,this,[this]() { switchpg(0); });
     connect(ui->logout,&QPushButton::clicked,this,[this]() { switchpg(0); });
 
     connect(ui->add_d,&QPushButton::clicked,this,[this]() { switchpg(3); });
@@ -52,21 +51,31 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     connect(ui->sp,&QPushButton::clicked,this,[this]() { switchpg(17); });
 
     connect(backbuts,&QButtonGroup::buttonClicked,this,[this]() {switchpg(2);});
+    connect(ui->back_16,&QPushButton::clicked,this,[this]() { switchpg(0); });
     connect(ui->login_button,&QPushButton::clicked,this,[this]() {
         if(db.check(ui->id_login->text().toInt())){
             switchpg(2);
         }else{
                 ui->message->setText("not in the login database");
 
-        }
+        }});
 
+    connect(ui->regist_but,&QPushButton::clicked,this,[this]() {
+        if(ui->regist_email->text()=="" || ui->regist_passwd->text()=="" || ui->cm_password->text()=="" || ui->regist_id->text()==""){
+            ui->message_16->setText("please fill all the fields!");
+        }else if(ui->regist_passwd->text()!=ui->cm_password->text()) {
+            ui->message_16->setText("passwords are not matching ");
+        }else if(db.registr(ui->regist_id->text().toInt(),ui->cm_password->text().toStdString())){
+            ui->message_16->setText("success ! you may now login.");
+        }else{
+            ui->message_16->setText("id is taken / make sure the fields follow the types(int/str");}}
+);
 
-    });
     //<================================== end of buttons mapping=======>
-    for (QLabel* lab:msgs){
-        QString mesi=ui->id_login->text();
-        lab->setText(mesi);
-    }
+    //for (QLabel* lab:msgs){
+      //  QString mesi=ui->id_login->text();
+      //  lab->setText(mesi);
+    //}
 
 
 
