@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(database dbo,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
 //i was going to use a back_1 back_2 back_3 etc  buttons with the same repeated fonction and connection for 16 times to send the user to page 2 (main menu) but i discovered that i can group the buttons and use findchild
+    db=dbo;
     ui->setupUi(this);
     QButtonGroup *backbuts= new QButtonGroup(this);
     QList<QLabel*> msgs;
@@ -53,13 +54,22 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->sp,&QPushButton::clicked,this,[this]() { switchpg(17); });
 
     connect(backbuts,&QButtonGroup::buttonClicked,this,[this]() {switchpg(2);});
+    connect(ui->login_button,&QPushButton::clicked,this,[this]() {
+        if(db.check(ui->id_login->text().toInt())){
+            switchpg(2);
+        }else{
+                ui->message->setText("not in the login database");
 
+        }
+
+
+    });
     //<================================== end of buttons mapping=======>
-
-
     for (QLabel* lab:msgs){
-        lab->setText("test");
+        QString mesi=ui->id_login->text();
+        lab->setText(mesi);
     }
+
 
 
 
@@ -160,3 +170,16 @@ MainWindow::~MainWindow()
 void MainWindow::switchpg(int to){
     ui->pages->setCurrentIndex(to);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -92,7 +92,7 @@
        <string>register</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_14">
+     <widget class="QLineEdit" name="id_login">
       <property name="geometry">
        <rect>
         <x>530</x>
