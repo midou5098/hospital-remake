@@ -164,6 +164,26 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 
 
+//<======================================deleting doctor=================================>
+    connect(ui->doctor_delete_but,&QPushButton::clicked,this,[this](){
+        if(ui->delete_doctor_id->text()=="" || ui->doctor_delete_next->text()==""){
+            ui->message_5->setText("fill all the fields please !");
+
+        }else if (!db.check_super(ui->delete_doctor_id->text().toInt())){
+            ui->message_5->setText("not a valid doctor id");
+        }else if (!db.check_super(ui->doctor_delete_next->text().toInt())){
+            ui->message_5->setText("not a valid inheretant id");
+        }else{
+            db.transfer_nurses(ui->delete_doctor_id->text().toInt(),ui->doctor_delete_next->text().toInt());
+            if(db.remove_doctor(ui->delete_doctor_id->text().toInt())){
+                ui->message_5->setText("doctor deleted , thanks for your service ");
+            }else{
+                ui->message_5->setText("something went wrong , check your data ");
+            }
+        }
+
+
+    });
 
 
 

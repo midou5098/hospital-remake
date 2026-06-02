@@ -1172,7 +1172,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;doctor ID :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_137">
+     <widget class="QLineEdit" name="delete_doctor_id">
       <property name="geometry">
        <rect>
         <x>590</x>
@@ -1195,7 +1195,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;ID of  the doctor inheriting the nurses :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_138">
+     <widget class="QLineEdit" name="doctor_delete_next">
       <property name="geometry">
        <rect>
         <x>590</x>
@@ -1205,7 +1205,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_105">
+     <widget class="QPushButton" name="doctor_delete_but">
       <property name="geometry">
        <rect>
         <x>550</x>

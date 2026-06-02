@@ -44,7 +44,6 @@ bool database::check_disease(int id){
     if(sqlite3_step(stmt)==SQLITE_ROW){
         sqlite3_finalize(stmt);
         return true;
-
     }else{
         sqlite3_finalize(stmt);
         return false;
