@@ -187,9 +187,27 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 
 
+//<==================================deleting nurses
+
+    connect(ui->delete_nurse_but,&QPushButton::clicked,this,[this](){
+        if(ui->delete_nurse_id->text()=="" || ui->delete_nurse_next->text()==""){
+            ui->message_5->setText("fill all the fields please !");
+
+        }else if (!db.check_super(ui->delete_nurse_id->text().toInt())){
+            ui->message_5->setText("not a valid nurse id");
+        }else if (!db.check_super(ui->delete_nurse_next->text().toInt())){
+            ui->message_5->setText("not a valid inheretant id");
+        }else{
+            db.transfer_nurses(ui->delete_nurse_id->text().toInt(),ui->delete_nurse_next->text().toInt());
+            if(db.remove_nurse(ui->delete_nurse_id->text().toInt())){
+                ui->message_5->setText("nurse deleted , thanks for your service ");
+            }else{
+                ui->message_5->setText("something went wrong , check your data ");
+            }
+        }
 
 
-
+    });
 
 
 

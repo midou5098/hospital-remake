@@ -1246,7 +1246,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="deleting_nurse">
-     <widget class="QPushButton" name="pushButton_106">
+     <widget class="QPushButton" name="delete_nurse_but">
       <property name="geometry">
        <rect>
         <x>510</x>
@@ -1272,7 +1272,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;nurse ID :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_139">
+     <widget class="QLineEdit" name="delete_nurse_next">
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -1295,7 +1295,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;deleting a nurse&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_140">
+     <widget class="QLineEdit" name="delete_nurse_id">
       <property name="geometry">
        <rect>
         <x>550</x>
