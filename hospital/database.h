@@ -5,11 +5,13 @@
 class database{
 private:
     sqlite3* db,*adm;
+
 public:
+    bool pulled=false;
     database();
     bool opening(void);
-    bool check(int id);
-    bool registr(int id,std::string passwd);
+    bool check(int id,std::string pass);
+    bool registr(int id,std::string passwd,std::string gmail);
 
 
 

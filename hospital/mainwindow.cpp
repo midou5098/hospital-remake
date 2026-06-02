@@ -52,24 +52,107 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
     connect(backbuts,&QButtonGroup::buttonClicked,this,[this]() {switchpg(2);});
     connect(ui->back_16,&QPushButton::clicked,this,[this]() { switchpg(0); });
+
+//    <========================= the login button ================>
+
     connect(ui->login_button,&QPushButton::clicked,this,[this]() {
-        if(db.check(ui->id_login->text().toInt())){
+        if(db.check(ui->id_login->text().toInt(),ui->login_passwd->text().toStdString()) && db.pulled==true){
             switchpg(2);
         }else{
                 ui->message->setText("not in the login database");
 
         }});
 
+
+
+
+
+//<=========================== the register button ========================>
     connect(ui->regist_but,&QPushButton::clicked,this,[this]() {
         if(ui->regist_email->text()=="" || ui->regist_passwd->text()=="" || ui->cm_password->text()=="" || ui->regist_id->text()==""){
             ui->message_16->setText("please fill all the fields!");
         }else if(ui->regist_passwd->text()!=ui->cm_password->text()) {
             ui->message_16->setText("passwords are not matching ");
-        }else if(db.registr(ui->regist_id->text().toInt(),ui->cm_password->text().toStdString())){
+        }else if(db.registr(ui->regist_id->text().toInt(),ui->cm_password->text().toStdString(),ui->regist_email->text().toStdString())){
             ui->message_16->setText("success ! you may now login.");
         }else{
             ui->message_16->setText("id is taken / make sure the fields follow the types(int/str");}}
-);
+    );
+
+
+
+
+//<=================================== addd doctor button========================>
+    connect(ui->add_doctor_but,&QPushButton::clicked,this,[this](){
+        if(ui->add_doctor_age->text()=="" || ui->add_doctor_name->text()=="" || ui->add_doctor_level->text()=="" || ui->add_doctor_ml->text()==""){
+            ui->message_2->setText("pleaase fill all the fields!");
+        }else{
+            doctor temp;
+            temp.name=ui->add_doctor_name->text().toStdString();
+            temp.age=ui->add_doctor_age->text().toInt();
+            temp.level=ui->add_doctor_level->text().toStdString();
+            temp.months_left=ui->add_doctor_ml->text().toInt();
+            if(db.add_doctor(temp)){
+                ui->message_2->setText("doctor added !");
+            }else{
+                ui->message_2->setText("something went wrong , check your data!");
+            }
+    }});
+
+    connect(ui->pull_database,&QPushButton::clicked,this,[this](){
+        if(db.opening()){
+            ui->message->setText("database imported successfully!");
+        }else{
+            ui->message->setText("import failed");
+        }
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //<================================== end of buttons mapping=======>
     //for (QLabel* lab:msgs){

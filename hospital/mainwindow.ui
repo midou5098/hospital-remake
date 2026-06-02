@@ -102,7 +102,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_15">
+     <widget class="QLineEdit" name="login_passwd">
       <property name="geometry">
        <rect>
         <x>530</x>
@@ -149,6 +149,19 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pull_database">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>450</y>
+        <width>121</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>pull database</string>
       </property>
      </widget>
     </widget>
@@ -600,7 +613,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="add_doctor">
-     <widget class="QLineEdit" name="lineEdit_121">
+     <widget class="QLineEdit" name="add_doctor_name">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -608,6 +621,9 @@
         <width>113</width>
         <height>25</height>
        </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_180">
@@ -646,7 +662,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;sex :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_123">
+     <widget class="QLineEdit" name="add_doctor_age">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -666,7 +682,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_125">
+     <widget class="QLineEdit" name="add_doctor_level">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -676,7 +692,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_182">
+     <widget class="QLabel" name="add_doctor_ml">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -725,10 +741,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;carrer :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;level:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_102">
+     <widget class="QPushButton" name="add_doctor_but">
       <property name="geometry">
        <rect>
         <x>520</x>

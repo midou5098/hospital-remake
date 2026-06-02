@@ -20,11 +20,12 @@ database::database(){
 
 
 
-bool database::check(int id){
+bool database::check(int id,std::string passwd){
     sqlite3_stmt* stmt;
-    const char* sql="SELECT * FROM admin WHERE id=?;";
+    const char* sql="SELECT * FROM admin WHERE id=? AND passwd=?;";
     sqlite3_prepare_v2(adm,sql,-1,&stmt,nullptr);
     sqlite3_bind_int(stmt,1,id);
+    sqlite3_bind_text(stmt,2,passwd.c_str(),-1,SQLITE_STATIC);
     if(sqlite3_step(stmt)==SQLITE_ROW){
         sqlite3_finalize(stmt);
         return true;
@@ -35,12 +36,13 @@ bool database::check(int id){
 
 }
 
-bool database::registr(int id,std::string psswd){
+bool database::registr(int id,std::string psswd,std::string gmail){
     sqlite3_stmt* stmt;
-    const char* sql="INSERT INTO admin (id,passwd) VALUES (?,?);";
+    const char* sql="INSERT INTO admin (id,passwd,gmail) VALUES (?,?,?);";
     sqlite3_prepare_v2(adm,sql,-1,&stmt,nullptr);
     sqlite3_bind_int(stmt,1,id);
     sqlite3_bind_text(stmt,2,psswd.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_text(stmt,3,gmail.c_str(),-1,SQLITE_STATIC);
     if(sqlite3_step(stmt)==SQLITE_DONE){
         sqlite3_finalize(stmt);
         return true;
@@ -222,6 +224,7 @@ bool database::opening(void){
         db = nullptr;
         return false;
     }
+    pulled=true;
     return true;}
 
 
@@ -231,13 +234,14 @@ bool database::opening(void){
 bool database::add_doctor(doctor doctor){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql = "INSERT INTO doctors (name, age, level, sex, months_left) VALUES (? , ?, ? , ?, ?);";
+    sql = "INSERT INTO doctors (name, age, level, sex, months_left,nurses_count) VALUES (? , ?, ? , ?, ?,?);";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,doctor.name.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 2, doctor.age);
     sqlite3_bind_text(stmt,3,doctor.level.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_text(stmt,4,doctor.sex.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 5, doctor.months_left);
+    sqlite3_bind_int(stmt, 6, 0);
     int result = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     if (result != SQLITE_DONE) {
