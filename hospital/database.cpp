@@ -242,11 +242,12 @@ bool database::add_doctor(doctor doctor){
     sqlite3_bind_text(stmt,4,doctor.sex.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 5, doctor.months_left);
     sqlite3_bind_int(stmt, 6, 0);
-    int result = sqlite3_step(stmt);
-    sqlite3_finalize(stmt);
-    if (result != SQLITE_DONE) {
+    if (sqlite3_step(stmt) != SQLITE_DONE) {
+        std::cout << "Step failed: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_finalize(stmt);
         return false;
     }
+    sqlite3_finalize(stmt);
     return true;
 }
 

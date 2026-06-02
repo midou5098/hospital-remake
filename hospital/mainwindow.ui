@@ -639,7 +639,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:700;&quot;&gt;adding a doctor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_122">
+     <widget class="QLineEdit" name="add_doctor_sex">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -672,7 +672,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_124">
+     <widget class="QLineEdit" name="add_doctor_ml">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -692,7 +692,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="add_doctor_ml">
+     <widget class="QLabel" name="laabel">
       <property name="geometry">
        <rect>
         <x>20</x>

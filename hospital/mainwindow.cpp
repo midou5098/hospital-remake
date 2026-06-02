@@ -86,7 +86,7 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 //<=================================== addd doctor button========================>
     connect(ui->add_doctor_but,&QPushButton::clicked,this,[this](){
-        if(ui->add_doctor_age->text()=="" || ui->add_doctor_name->text()=="" || ui->add_doctor_level->text()=="" || ui->add_doctor_ml->text()==""){
+        if(ui->add_doctor_age->text()=="" || ui->add_doctor_name->text()=="" || ui->add_doctor_level->text()=="" || ui->laabel->text()==""){
             ui->message_2->setText("pleaase fill all the fields!");
         }else{
             doctor temp;
@@ -94,6 +94,7 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
             temp.age=ui->add_doctor_age->text().toInt();
             temp.level=ui->add_doctor_level->text().toStdString();
             temp.months_left=ui->add_doctor_ml->text().toInt();
+            temp.sex=ui->add_doctor_sex->text().toStdString();
             if(db.add_doctor(temp)){
                 ui->message_2->setText("doctor added !");
             }else{
