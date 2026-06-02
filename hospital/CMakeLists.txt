@@ -48,8 +48,20 @@ else()
         )
     endif()
 endif()
+find_package(PkgConfig REQUIRED)
+find_package(SQLite3 REQUIRED)
+target_include_directories(hospital PRIVATE ${GTK3_INCLUDE_DIRS})
 
-target_link_libraries(hospital PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_directories(hospital PRIVATE
+    /home/bro/my\ creations/banks-system
+)
+pkg_check_modules(GTK3 REQUIRED IMPORTED_TARGET gtk+-3.0)
+target_link_libraries(hospital PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    SQLite::SQLite3
+    /home/bro/my\ creations/banks-system/libnfd.a
+    PkgConfig::GTK3
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
