@@ -204,9 +204,9 @@ bool database::opening(void){
 
 
 
-    nfdu8char_t *outPath;
+    nfdu8char_t *outPath=nullptr;
     nfdu8filteritem_t filters[1] = { { "Source code", "db" }};
-    nfdopendialogu8args_t args;
+    nfdopendialogu8args_t args{};
     args.filterList   = filters;
     args.filterCount  = 1;
     args.defaultPath  = nullptr;

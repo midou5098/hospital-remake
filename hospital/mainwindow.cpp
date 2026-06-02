@@ -56,7 +56,9 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 //    <========================= the login button ================>
 
     connect(ui->login_button,&QPushButton::clicked,this,[this]() {
-        if(db.check(ui->id_login->text().toInt(),ui->login_passwd->text().toStdString()) && db.pulled==true){
+        if(!db.pulled){
+                ui->message->setText("no database pulled");
+        }else if(db.check(ui->id_login->text().toInt(),ui->login_passwd->text().toStdString()) && db.pulled){
             switchpg(2);
         }else{
                 ui->message->setText("not in the login database");
