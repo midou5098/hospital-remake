@@ -5,4 +5,5 @@
 #include <QTableWidget>
 void load_list_doctors(QTableWidget& list,std::vector<doctor> docvec);
 void load_list_nurses(QTableWidget& list,std::vector<nurse> nurvec);
+void load_list_patients(QTableWidget& list,std::vector<patient> patvec);
 #endif // EXTERNALS_H

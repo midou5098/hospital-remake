@@ -30,3 +30,21 @@ void load_list_nurses(QTableWidget& list,std::vector<nurse> nurvec){
         }
     }
 }
+
+
+void load_list_patients(QTableWidget& list,std::vector<patient> patvec){
+    //std::cout<<"we got here";
+    if(!patvec.empty()){
+        for(patient temp : patvec){
+            int s=list.rowCount();
+            list.insertRow(s);
+            list.setItem(s,0,new QTableWidgetItem(QString::number(temp.id)));
+            list.setItem(s,1,new QTableWidgetItem(QString::fromStdString(temp.name)));
+            list.setItem(s,2,new QTableWidgetItem(QString::fromStdString(temp.state)));
+            list.setItem(s,3,new QTableWidgetItem(QString::number(temp.disease)));
+            list.setItem(s,4,new QTableWidgetItem(QString::number(temp.nurse)));
+
+        }
+    }
+}
+

@@ -530,12 +530,13 @@ std::vector<patient> database::list_patients(){
     const char* sql;
     sql="SELECT * FROM patients;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    while(sqlite3_step(stmt)){
+    while(sqlite3_step(stmt)==SQLITE_ROW){
         patient temp;
         temp.id=sqlite3_column_int(stmt, 0),
         temp.name=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)),
-        temp.disease=sqlite3_column_int(stmt, 5),
-        temp.state=sqlite3_column_int(stmt, 6);
+        temp.disease=sqlite3_column_int(stmt, 4),
+        temp.state=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+        temp.nurse=sqlite3_column_int(stmt, 7);
         patvec.push_back(temp);
     }
     return patvec;

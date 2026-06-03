@@ -1635,12 +1635,12 @@
        <string>back</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_3">
+     <widget class="QTableWidget" name="patient_list">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>350</x>
         <y>80</y>
-        <width>801</width>
+        <width>511</width>
         <height>401</height>
        </rect>
       </property>
@@ -1656,22 +1656,7 @@
       </column>
       <column>
        <property name="text">
-        <string>age</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
         <string>state</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>sex</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>payment</string>
        </property>
       </column>
       <column>

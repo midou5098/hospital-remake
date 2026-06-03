@@ -52,7 +52,11 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     });
 
 
-    connect(ui->lp,&QPushButton::clicked,this,[this]() { switchpg(11); });
+    connect(ui->lp,&QPushButton::clicked,this,[this]() {
+        load_list_patients(*ui->patient_list,db.list_patients());
+        switchpg(11);
+    });
+
 
     connect(ui->md,&QPushButton::clicked,this,[this]() { switchpg(12); });
     connect(ui->mn,&QPushButton::clicked,this,[this]() { switchpg(13); });
