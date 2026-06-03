@@ -226,10 +226,10 @@ bool database::add_count(int id ,int  state){
     const char* sql;
     switch(state){
         case -1:
-            sql="UPDATE nurses SET deads VALUES deads+1 WHERE id=(SELECT nurse FROM patients WHERE id =?);";
+            sql="UPDATE nurses SET dead = dead+1 WHERE id=(SELECT nurse FROM patients WHERE id =?);";
             break;
         case 1:
-            sql="UPDATE nurses SET cured VALUES cured+1 WHERE id=id=(SELECT nurse FROM patients WHERE id =?);";//i wanted to use join but sqlite doesnt support it for UPDATE
+            sql="UPDATE nurses SET cured = cured+1 WHERE id=(SELECT nurse FROM patients WHERE id =?);";//i wanted to use join but sqlite doesnt support it for UPDATE
             break;
         }
 
@@ -338,7 +338,7 @@ bool database::add_doctor(doctor doctor){
 bool database::add_nurse(nurse nurse){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql = "INSERT INTO nurses (name, age, supervisor, sex,patients_count) VALUES (? , ?, ? , ?,?);";
+    sql = "INSERT INTO nurses (name, age, supervisor, sex,patients_count,cured,dead) VALUES (? , ?, ? , ?,?,?,?);";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,nurse.name.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 2, nurse.age);

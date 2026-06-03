@@ -219,7 +219,7 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
         }else if (!db.check_patient(ui->delete_patient_id->text().toInt())){
             ui->message_7->setText("not a valid patient id");
         }else{
-            if(db.remove_patient(ui->delete_patient_id->text().toInt()) && db.add_count(ui->delete_patient_id->text().toInt(),!ui->cured->isChecked() ? 1:-1)){
+            if(db.remove_patient(db.add_count(ui->delete_patient_id->text().toInt(),!ui->cured->isChecked() ? 1:-1) && ui->delete_patient_id->text().toInt())){
                 ui->message_7->setText("patient deleted .");
             }else{
                 ui->message_7->setText("something went wrong , check your data ");
