@@ -226,10 +226,10 @@ bool database::add_count(int id ,int  state){
     const char* sql;
     switch(state){
         case -1:
-            sql="UPDATE nurses SET deads VALUES deads+1 WHERE id=?;";
+            sql="UPDATE nurses SET deads VALUES deads+1 WHERE id=(SELECT nurse FROM patients WHERE id =?);";
             break;
         case 1:
-            sql="UPDATE nurses SET deads VALUES deads+1 WHERE id=?;";
+            sql="UPDATE nurses SET cured VALUES cured+1 WHERE id=id=(SELECT nurse FROM patients WHERE id =?);";//i wanted to use join but sqlite doesnt support it for UPDATE
             break;
         }
 
@@ -326,7 +326,7 @@ bool database::add_doctor(doctor doctor){
     sqlite3_bind_int(stmt, 5, doctor.months_left);
     sqlite3_bind_int(stmt, 6, 0);
     if (sqlite3_step(stmt) != SQLITE_DONE) {
-        std::cout << "Step failed: " << sqlite3_errmsg(db) << std::endl;
+        //std::cout << "Step failed: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_finalize(stmt);
         return false;
     }
