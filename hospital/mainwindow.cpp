@@ -191,24 +191,40 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
     connect(ui->delete_nurse_but,&QPushButton::clicked,this,[this](){
         if(ui->delete_nurse_id->text()=="" || ui->delete_nurse_next->text()==""){
-            ui->message_5->setText("fill all the fields please !");
+            ui->message_6->setText("fill all the fields please !");
 
-        }else if (!db.check_super(ui->delete_nurse_id->text().toInt())){
-            ui->message_5->setText("not a valid nurse id");
-        }else if (!db.check_super(ui->delete_nurse_next->text().toInt())){
-            ui->message_5->setText("not a valid inheretant id");
+        }else if (!db.check_nurse(ui->delete_nurse_id->text().toInt())){
+            ui->message_6->setText("not a valid nurse id");
+        }else if (!db.check_nurse(ui->delete_nurse_next->text().toInt())){
+            ui->message_6->setText("not a valid inheretant id");
         }else{
-            db.transfer_nurses(ui->delete_nurse_id->text().toInt(),ui->delete_nurse_next->text().toInt());
+            db.transfer_patients(ui->delete_nurse_id->text().toInt(),ui->delete_nurse_next->text().toInt());
             if(db.remove_nurse(ui->delete_nurse_id->text().toInt())){
-                ui->message_5->setText("nurse deleted , thanks for your service ");
+                ui->message_6->setText("nurse deleted , thanks for your service ");
             }else{
-                ui->message_5->setText("something went wrong , check your data ");
+                ui->message_6->setText("something went wrong , check your data ");
             }
         }
 
 
     });
 
+//<============================== patient delete =====================>
+    connect(ui->delete_patient_but,&QPushButton::clicked,this,[this](){
+        if(ui->delete_patient_id->text()==""){
+            ui->message_6->setText("fill all the fields please !");
+
+        }else if (!ui->dead->isChecked() && !ui->cured->isChecked()){
+            ui->message_6->setText("pick a state please !");
+        }else if (!db.check_patient(ui->delete_patient_id->text().toInt())){
+            ui->message_6->setText("not a valid patient id");
+        }else{
+            if(db.remove_patient(ui->delete_patient_id->text().toInt())){
+                ui->message_6->setText("patient deleted .");
+            }else{
+                ui->message_6->setText("something went wrong , check your data ");
+            }
+        }});
 
 
 

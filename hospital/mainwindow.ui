@@ -1346,7 +1346,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="deleting_patient">
-     <widget class="QPushButton" name="pushButton_107">
+     <widget class="QPushButton" name="delete_patient_but">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -1398,7 +1398,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;deleting a patient&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_142">
+     <widget class="QLineEdit" name="delete_patient_id">
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -1421,7 +1421,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;result of treatment :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QRadioButton" name="dead">
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -1434,7 +1434,7 @@
        <string>dead</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_2">
+     <widget class="QRadioButton" name="cured">
       <property name="geometry">
        <rect>
         <x>550</x>
