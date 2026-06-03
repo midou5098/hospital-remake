@@ -443,8 +443,9 @@ nurse database::search_nurse(int id,bool& found){
         temp.id=sqlite3_column_int(stmt, 0),
         temp.name=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)),
         temp.age=sqlite3_column_int(stmt, 2),
-        temp.supervisor=sqlite3_column_int(stmt, 3),
-            temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+        temp.supervisor=sqlite3_column_int(stmt, 4),
+        temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        temp.patients_count=sqlite3_column_int(stmt,5);
 
     }else{
         found=false;
@@ -604,13 +605,12 @@ bool database::modify_doctor(int id,doctor newd){
 bool database::modify_nurse(int id,nurse newd){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql="UPDATE nurses SET (name=?,age=?,sex=?,level=?,supervisor=?) WHERE id=?;";
+    sql="UPDATE nurses SET name=?,age=?,supervisor=? WHERE id=?;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,newd.name.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt,2,newd.age);
-    sqlite3_bind_text(stmt,3,newd.sex.c_str(),-1,SQLITE_STATIC);
-    sqlite3_bind_int(stmt,4,newd.supervisor);
-    sqlite3_bind_int(stmt,5,id);
+    sqlite3_bind_int(stmt,3,newd.supervisor);
+    sqlite3_bind_int(stmt,4,id);
     if(sqlite3_step(stmt)!=0){
         sqlite3_finalize(stmt);
         return true;

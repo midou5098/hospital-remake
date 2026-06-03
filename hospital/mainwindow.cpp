@@ -299,6 +299,47 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 
 
+//<============================= modify nurse ------------------>
+
+    connect(ui->search_nurse_up,&QPushButton::clicked,this,[this] (){
+        nurse temp;
+        if(ui->modify_nurse_id->text()==""){
+            ui->message_14->setText("type an id to search ! ");
+        }
+        temp=db.search_nurse(ui->modify_nurse_id->text().toInt(),db.nurse_found);
+        if(db.nurse_found){
+            load_prev_nurse(*ui->previous_data_n,temp);
+            ui->message_14->setText("nurse found");
+
+        }else{
+            ui->message_14->setText("not a valid nurse id 0");
+        }
+
+
+
+
+
+
+
+
+    });
+    connect(ui->update_nurse_but,&QPushButton::clicked,this,[this](){
+        if(ui->new_n_name->text()=="" || ui->new_n_age->text()=="" || ui->new_n_super->text()==""){
+            ui->message_14->setText("fill all the fields please !");
+
+        }else if (!db.check_super(ui->new_n_super->text().toInt())){
+            ui->message_14->setText("not a valid doctor id");
+        }else{
+            nurse temp;
+            temp.name=ui->new_d_name->text().toStdString();
+            temp.age=ui->new_d_age->text().toInt();
+            temp.supervisor=ui->new_n_super->text().toInt();
+            if(db.modify_nurse(ui->modify_nurse_id->text().toInt(),temp)){
+                ui->message_14->setText("nurse modified .");
+            }else{
+                ui->message_14->setText("something went wrong , check your data ");
+            }
+        }});
 
 
 

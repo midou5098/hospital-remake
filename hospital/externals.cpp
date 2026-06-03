@@ -71,8 +71,20 @@ void load_prev_doctor(QTableWidget& list,doctor doc){
 
 
 
-void load_prev_nurse(QTableWidget& list,nurse nur);
-void load_prev_patient(QTableWidget& list,doctor pat);
+void load_prev_nurse(QTableWidget& list,nurse nur){
+    int s=list.columnCount();
+    list.insertColumn(s);
+    list.setItem(0,0,new QTableWidgetItem(QString::number(nur.id)));
+    list.setItem(1,0,new QTableWidgetItem(QString::fromStdString(nur.name)));
+    list.setItem(2,0,new QTableWidgetItem(QString::number(nur.age)));
+    list.setItem(3,0,new QTableWidgetItem(QString::fromStdString(nur.sex)));
+    list.setItem(4,0,new QTableWidgetItem(QString::number(nur.supervisor)));
+    list.setItem(5,0,new QTableWidgetItem(QString::number(nur.patients_count)));
+
+}
+
+
+void load_prev_patient(QTableWidget& list,nurse pat);
 
 
 

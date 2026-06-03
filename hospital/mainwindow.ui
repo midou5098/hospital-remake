@@ -1933,47 +1933,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;modify nurse&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QListWidget" name="listWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>830</x>
-        <y>260</y>
-        <width>241</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>id</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>name</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>age</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>sex</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>supervisor</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>patients</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="search_nurse_up">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1986,7 +1946,7 @@
        <string>search</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_9">
+     <widget class="QLineEdit" name="new_n_age">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -2022,7 +1982,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;nurse id :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_11">
+     <widget class="QLineEdit" name="modify_nurse_id">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -2084,7 +2044,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;new supervisor id : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_12">
+     <widget class="QLineEdit" name="new_n_super">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -2094,7 +2054,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_13">
+     <widget class="QLineEdit" name="new_n_name">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -2104,7 +2064,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="update_nurse_but">
       <property name="geometry">
        <rect>
         <x>510</x>
@@ -2129,6 +2089,41 @@
       <property name="text">
        <string/>
       </property>
+     </widget>
+     <widget class="QTableWidget" name="previous_data_n">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>260</y>
+        <width>241</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <row>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>name</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>age</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>sex</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>patient count</string>
+       </property>
+      </row>
      </widget>
     </widget>
     <widget class="QWidget" name="modify_p">
