@@ -35,7 +35,19 @@ bool database::check_nurse(int id){
         return false;
     }
 }
-
+bool database::check_patient(int id){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT * FROM patients WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+}
 bool database::check_disease(int id){
     sqlite3_stmt* stmt;
     const char* sql="SELECT * FROM diseases WHERE id=?;";
@@ -209,6 +221,29 @@ bool database::transfer_patients(int old,int newi){
 
 }
 
+bool database::add_count(int id ,int  state){
+    sqlite3_stmt* stmt;
+    const char* sql;
+    switch(state){
+        case -1:
+            sql="UPDATE nurses SET deads VALUES deads+1 WHERE id=?;";
+            break;
+        case 1:
+            sql="UPDATE nurses SET deads VALUES deads+1 WHERE id=?;";
+            break;
+        }
+
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_DONE){
+        sqlite3_finalize(stmt);
+        return true;
+    }else{
+        sqlite3_finalize(stmt);
+        return false;
+    }
+
+}
 
 
 
@@ -310,6 +345,8 @@ bool database::add_nurse(nurse nurse){
     sqlite3_bind_int(stmt, 3, nurse.supervisor);
     sqlite3_bind_text(stmt,4,nurse.sex.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt, 5, 0);
+    sqlite3_bind_int(stmt, 6, 0);
+    sqlite3_bind_int(stmt, 7, 0);
 
     if (sqlite3_step(stmt)==SQLITE_DONE) {
         sqlite3_finalize(stmt);

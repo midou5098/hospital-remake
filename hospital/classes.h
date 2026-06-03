@@ -21,6 +21,8 @@ class nurse{
     std::string sex;
     int supervisor;
     int patients_count;
+    int patients_dead;
+    int patients_cured;
 };
 
 

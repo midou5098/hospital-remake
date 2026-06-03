@@ -212,17 +212,17 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 //<============================== patient delete =====================>
     connect(ui->delete_patient_but,&QPushButton::clicked,this,[this](){
         if(ui->delete_patient_id->text()==""){
-            ui->message_6->setText("fill all the fields please !");
+            ui->message_7->setText("fill all the fields please !");
 
         }else if (!ui->dead->isChecked() && !ui->cured->isChecked()){
-            ui->message_6->setText("pick a state please !");
+            ui->message_7->setText("pick a state please !");
         }else if (!db.check_patient(ui->delete_patient_id->text().toInt())){
-            ui->message_6->setText("not a valid patient id");
+            ui->message_7->setText("not a valid patient id");
         }else{
-            if(db.remove_patient(ui->delete_patient_id->text().toInt())){
-                ui->message_6->setText("patient deleted .");
+            if(db.remove_patient(ui->delete_patient_id->text().toInt()) && db.add_count(ui->delete_patient_id->text().toInt(),!ui->cured->isChecked() ? 1:-1)){
+                ui->message_7->setText("patient deleted .");
             }else{
-                ui->message_6->setText("something went wrong , check your data ");
+                ui->message_7->setText("something went wrong , check your data ");
             }
         }});
 

@@ -13,7 +13,10 @@ public:
     bool check_super(int id);
     bool check_nurse(int id);
     bool check_disease(int id);
+    bool check_patient(int id);
 
+
+    bool add_count(int id ,int  state);
 
 
 
