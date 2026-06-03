@@ -497,9 +497,9 @@ std::vector<doctor> database::list_doctors(){
     while(sqlite3_step(stmt)==SQLITE_ROW){
         doctor temp;//will be reducing the amount of details a user can see by listing to add more light on the search feature.
         temp.id=sqlite3_column_int(stmt, 0),
-        temp.level=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5)),
-        temp.months_left=sqlite3_column_int(stmt, 6);
-        temp.nurse_count=sqlite3_column_int(stmt, 7);
+        temp.level=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)),
+        temp.months_left=sqlite3_column_int(stmt, 5);
+        temp.nurse_count=sqlite3_column_int(stmt, 6);
         docvec.push_back(temp);
     }
 
