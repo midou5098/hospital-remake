@@ -8,6 +8,8 @@
 #include <fstream>
 #include <nfd/nfd.h>
 #include <vector>
+#include "externals.h"
+
 
 
 #endif // LIBRARIES_H

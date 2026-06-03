@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "libraries.h"
 MainWindow::MainWindow(database& dbo,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),db(dbo)
@@ -38,7 +38,16 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     connect(ui->del_n,&QPushButton::clicked,this,[this]() { switchpg(7); });
     connect(ui->del_p,&QPushButton::clicked,this,[this]() { switchpg(8); });
 
-    connect(ui->ld,&QPushButton::clicked,this,[this]() { switchpg(9); });
+    connect(ui->ld,&QPushButton::clicked,this,[this]() {
+        std::vector<doctor> temp=db.list_doctors();
+        std::cout<< "docvec has been loaded";
+        load_list_doctor(*ui->doctor_list,temp);
+        switchpg(9);
+
+
+
+
+ });
     connect(ui->ln,&QPushButton::clicked,this,[this]() { switchpg(10); });
     connect(ui->lp,&QPushButton::clicked,this,[this]() { switchpg(11); });
 

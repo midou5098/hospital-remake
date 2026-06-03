@@ -488,13 +488,13 @@ patient database::search_patient(int id,bool& found){
 
 //======================listing dem data
 
-std::vector<doctor> database::list_doctors(int id){
+std::vector<doctor> database::list_doctors(){
     sqlite3_stmt* stmt;
     std::vector<doctor> docvec;
     const char* sql;
     sql="SELECT * FROM doctors;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    while(sqlite3_step(stmt)){
+    while(sqlite3_step(stmt)==SQLITE_ROW){
         doctor temp;//will be reducing the amount of details a user can see by listing to add more light on the search feature.
         temp.id=sqlite3_column_int(stmt, 0),
         temp.name=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)),
@@ -503,10 +503,11 @@ std::vector<doctor> database::list_doctors(int id){
         temp.nurse_count=sqlite3_column_int(stmt, 7);
         docvec.push_back(temp);
     }
+
     return docvec;
 }
 
-std::vector<nurse> database::list_nurses(int id){
+std::vector<nurse> database::list_nurses(){
     sqlite3_stmt* stmt;
     std::vector<nurse> nursevec;
     const char* sql;
@@ -524,7 +525,7 @@ std::vector<nurse> database::list_nurses(int id){
 }
 
 
-std::vector<patient> database::list_patients(int id){
+std::vector<patient> database::list_patients(){
     sqlite3_stmt* stmt;
     std::vector<patient> patvec;
     const char* sql;

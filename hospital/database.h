@@ -47,9 +47,9 @@ public:
 
 
 
-    std::vector<doctor> list_doctors(int id);
-    std::vector<nurse> list_nurses(int id);
-    std::vector<patient> list_patients(int id);
+    std::vector<doctor> list_doctors();
+    std::vector<nurse> list_nurses();
+    std::vector<patient> list_patients();
 
 
     bool add_doctor(doctor doctor);

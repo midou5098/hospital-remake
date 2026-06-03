@@ -1465,7 +1465,7 @@
      <widget class="QLabel" name="label_201">
       <property name="geometry">
        <rect>
-        <x>360</x>
+        <x>380</x>
         <y>0</y>
         <width>311</width>
         <height>41</height>
@@ -1475,15 +1475,20 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;doctors list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="doctor_list">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>80</y>
-        <width>801</width>
-        <height>401</height>
+        <x>350</x>
+        <y>110</y>
+        <width>401</width>
+        <height>291</height>
        </rect>
       </property>
+      <column>
+       <property name="text">
+        <string>New Column</string>
+       </property>
+      </column>
       <column>
        <property name="text">
         <string>id</string>
@@ -1491,32 +1496,7 @@
       </column>
       <column>
        <property name="text">
-        <string>name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>New Column</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>age</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>sex</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>months left</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>New Column</string>
+        <string>level</string>
        </property>
       </column>
       <column>
