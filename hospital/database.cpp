@@ -582,14 +582,13 @@ int database::count_patients(int id){
 bool database::modify_doctor(int id,doctor newd){
     sqlite3_stmt* stmt;
     const char* sql;
-    sql="UPDATE doctors SET (name=?,age=?,sex=?,level=?,months_left=?) WHERE id=?;";
+    sql="UPDATE doctors SET name=?,age=?,level=?,months_left=? WHERE id=?;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     sqlite3_bind_text(stmt,1,newd.name.c_str(),-1,SQLITE_STATIC);
     sqlite3_bind_int(stmt,2,newd.age);
-    sqlite3_bind_text(stmt,3,newd.sex.c_str(),-1,SQLITE_STATIC);
-    sqlite3_bind_text(stmt,4,newd.level.c_str(),-1,SQLITE_STATIC);
-    sqlite3_bind_int(stmt,5,newd.months_left);
-    sqlite3_bind_int(stmt,6,id);
+    sqlite3_bind_text(stmt,3,newd.level.c_str(),-1,SQLITE_STATIC);
+    sqlite3_bind_int(stmt,4,newd.months_left);
+    sqlite3_bind_int(stmt,5,id);
     if(sqlite3_step(stmt)!=0){
         sqlite3_finalize(stmt);
         return true;

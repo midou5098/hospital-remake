@@ -275,10 +275,10 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     });
     connect(ui->update_d_but,&QPushButton::clicked,this,[this](){
         if(ui->new_d_name->text()=="" || ui->new_d_age->text()=="" || ui->new_d_level->text()=="" || ui->new_d_ml->text()==""){
-            ui->message_7->setText("fill all the fields please !");
+            ui->message_13->setText("fill all the fields please !");
 
         }else if (!db.check_super(ui->modify_doctor_id->text().toInt())){
-            ui->message_7->setText("not a valid doctor id");
+            ui->message_13->setText("not a valid doctor id");
         }else{
             doctor temp;
             temp.name=ui->new_d_name->text().toStdString();
@@ -287,9 +287,9 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
             temp.months_left=ui->new_d_ml->text().toInt();
 
             if(db.modify_doctor(ui->modify_doctor_id->text().toInt(),temp)){
-                ui->message_7->setText("patient deleted .");
+                ui->message_13->setText("doctor modified .");
             }else{
-                ui->message_7->setText("something went wrong , check your data ");
+                ui->message_13->setText("something went wrong , check your data ");
             }
         }});
 
