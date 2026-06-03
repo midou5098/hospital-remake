@@ -37,6 +37,15 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     connect(ui->del_d,&QPushButton::clicked,this,[this]() { switchpg(6); });
     connect(ui->del_n,&QPushButton::clicked,this,[this]() { switchpg(7); });
     connect(ui->del_p,&QPushButton::clicked,this,[this]() { switchpg(8); });
+    //disabling the clicks :
+    ui->doctor_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->nurse_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->patient_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+
+
+
+
 
     connect(ui->ld,&QPushButton::clicked,this,[this]() {
         std::vector<doctor> temp=db.list_doctors();
