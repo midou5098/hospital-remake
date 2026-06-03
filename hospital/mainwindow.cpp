@@ -251,8 +251,39 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
             }
         }});
 
+    //<============================== update doctor==============>
+    connect(ui->search_doctor_up,&QPushButton::clicked,this,[this] (){
+        if(ui->modify_doctor_id->text()==""){
+            ui->message_14->setText("type an id to search ! ");
+        }else if (db.search_doctor(ui->modify_doctor_id->text().toInt(),&db.doctor_found));
 
 
+
+
+
+
+
+
+    });
+    connect(ui->update_d_but,&QPushButton::clicked,this,[this](){
+        if(ui->new_d_name->text()=="" || ui->new_d_age->text()=="" || ui->new_d_level->text()=="" || ui->new_d_ml->text()==""){
+            ui->message_7->setText("fill all the fields please !");
+
+        }else if (!db.check_super(ui->modify_doctor_id->text().toInt())){
+            ui->message_7->setText("not a valid doctor id");
+        }else{
+            doctor temp;
+            temp.name=ui->new_d_name->text().toStdString();
+            temp.age=ui->new_d_age->text().toInt();
+            temp.level=ui->new_d_level->text().toStdString();
+            temp.months_left=ui->new_d_ml->text().toInt();
+
+            if(db.modify_doctor(ui->modify_doctor_id->text().toInt(),temp)){
+                ui->message_7->setText("patient deleted .");
+            }else{
+                ui->message_7->setText("something went wrong , check your data ");
+            }
+        }});
 
 
 

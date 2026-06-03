@@ -7,7 +7,7 @@ private:
     sqlite3* db,*adm;
 
 public:
-    bool pulled=false;
+    bool pulled=false,nurse_found=false,doctor_found=false,patient_false=false;
     database();
 
     bool check_super(int id);
@@ -23,7 +23,6 @@ public:
     bool opening(void);
     bool check(int id,std::string pass);
     bool registr(int id,std::string passwd,std::string gmail);
-
 
 
 

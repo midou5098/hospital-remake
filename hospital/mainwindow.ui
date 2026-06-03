@@ -1711,45 +1711,45 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;new name : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QTableWidget" name="previous_data_d">
       <property name="geometry">
        <rect>
         <x>830</x>
         <y>260</y>
         <width>241</width>
-        <height>111</height>
+        <height>181</height>
        </rect>
       </property>
-      <item>
+      <row>
        <property name="text">
         <string>id</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>name</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>age</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>sex</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>level</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
-        <string>months_left</string>
+        <string>nurses count</string>
        </property>
-      </item>
+      </row>
      </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
@@ -1803,7 +1803,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;months left : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="new_d_ml">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1826,7 +1826,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;doctor id :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
+     <widget class="QLineEdit" name="modify_doctor_id">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -1836,7 +1836,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_8">
+     <widget class="QLineEdit" name="new_d_name">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1846,7 +1846,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="search_doctor_up">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1859,7 +1859,7 @@
        <string>search</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="new_d_level">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1869,7 +1869,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_7">
+     <widget class="QLineEdit" name="new_d_age">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1892,7 +1892,7 @@
        <string>back</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="update_d_but">
       <property name="geometry">
        <rect>
         <x>510</x>
