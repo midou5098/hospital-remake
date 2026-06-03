@@ -41,14 +41,17 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     connect(ui->ld,&QPushButton::clicked,this,[this]() {
         std::vector<doctor> temp=db.list_doctors();
         std::cout<< "docvec has been loaded";
-        load_list_doctor(*ui->doctor_list,temp);
+        load_list_doctors(*ui->doctor_list,temp);
         switchpg(9);
+    });
+
+    connect(ui->ln,&QPushButton::clicked,this,[this]() {
+        std::vector<nurse> temp=db.list_nurses();
+        load_list_nurses(*ui->nurse_list,temp);
+        switchpg(10);
+    });
 
 
-
-
- });
-    connect(ui->ln,&QPushButton::clicked,this,[this]() { switchpg(10); });
     connect(ui->lp,&QPushButton::clicked,this,[this]() { switchpg(11); });
 
     connect(ui->md,&QPushButton::clicked,this,[this]() { switchpg(12); });
