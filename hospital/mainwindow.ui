@@ -1486,12 +1486,12 @@
       </property>
       <column>
        <property name="text">
-        <string>New Column</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
         <string>id</string>
+       </property>
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
        </property>
       </column>
       <column>
@@ -1502,6 +1502,11 @@
       <column>
        <property name="text">
         <string>nurses</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>months left</string>
        </property>
       </column>
      </widget>
