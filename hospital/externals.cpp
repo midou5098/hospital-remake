@@ -48,3 +48,48 @@ void load_list_patients(QTableWidget& list,std::vector<patient> patvec){
     }
 }
 
+
+void load_prev_doctor(QTableWidget& list,doctor doc){
+    int s=list.columnCount();
+    list.insertColumn(s);
+    list.setItem(0,0,new QTableWidgetItem(QString::number(doc.id)));
+    list.setItem(1,0,new QTableWidgetItem(QString::fromStdString(doc.name)));
+    list.setItem(2,0,new QTableWidgetItem(QString::number(doc.age)));
+    list.setItem(3,0,new QTableWidgetItem(QString::fromStdString(doc.level)));
+    list.setItem(4,0,new QTableWidgetItem(QString::fromStdString(doc.sex)));
+    list.setItem(5,0,new QTableWidgetItem(QString::number(doc.nurse_count)));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void load_prev_nurse(QTableWidget& list,nurse nur);
+void load_prev_patient(QTableWidget& list,doctor pat);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

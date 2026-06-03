@@ -254,8 +254,16 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     //<============================== update doctor==============>
     connect(ui->search_doctor_up,&QPushButton::clicked,this,[this] (){
         if(ui->modify_doctor_id->text()==""){
-            ui->message_14->setText("type an id to search ! ");
-        }else if (db.search_doctor(ui->modify_doctor_id->text().toInt(),&db.doctor_found));
+            ui->message_13->setText("type an id to search ! ");
+        }
+        doctor temp=db.search_doctor(ui->modify_doctor_id->text().toInt(),db.doctor_found);
+        if(db.doctor_found){
+            load_prev_doctor(*ui->previous_data_d,temp);
+             ui->message_13->setText("doctor found");
+
+        }else{
+            ui->message_13->setText("not a valid doctor id 0");
+        }
 
 
 

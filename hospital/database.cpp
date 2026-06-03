@@ -418,6 +418,7 @@ doctor database::search_doctor(int id,bool& found){
         temp.level=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3)),
         temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)),
         temp.months_left=sqlite3_column_int(stmt, 5);
+        temp.nurse_count=sqlite3_column_int(stmt, 6);
     }else{
         found=false;
         sqlite3_finalize(stmt);
