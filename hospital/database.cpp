@@ -422,7 +422,7 @@ doctor database::search_doctor(int id,bool& found){
 
     }else{
         found=false;
-        sqlite3_finalize(stmt);
+
     }
     sqlite3_finalize(stmt);
     return temp;
@@ -452,7 +452,7 @@ nurse database::search_nurse(int id,bool& found){
                 std::cout<<"nurse found";
     }else{
         found=false;
-        sqlite3_finalize(stmt);
+
     }
     sqlite3_finalize(stmt);
     return temp;
@@ -483,7 +483,7 @@ patient database::search_patient(int id,bool& found){
 
     }else{
         found=false;
-        sqlite3_finalize(stmt);
+
     }
     sqlite3_finalize(stmt);
     return temp;
