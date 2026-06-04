@@ -9,6 +9,8 @@
 #include <nfd/nfd.h>
 #include <vector>
 #include "externals.h"
+#include <QtNetwork/QSslSocket>
+#include <QByteArray>
 
 
 
