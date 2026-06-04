@@ -4,14 +4,9 @@
 #include "smtp.h";
 MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),db(dbo),smtp(smtpo)
+    , ui(new Ui::MainWindow),db(dbo),sp(smtpo)
 {
-    if(!smtp.connect("smtp.gmail.com", 465)){
-        ui->message_11->setText("connection failed");
-    }
-    if(smtp.auth(&smtp.user,&smtp.password)){
-        ui->message_11->setText("auth failed");
-    }
+
 
 
 //i was going to use a back_1 back_2 back_3 etc  buttons with the same repeated fonction and connection for 16 times to send the user to page 2 (main menu) but i discovered that i can group the buttons and use findchild
@@ -31,6 +26,12 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
         if(lab){
             msgs.append(lab);
         }
+    }
+    if(!sp.connect("smtp.gmail.com", 465)){
+        ui->message_11->setText("connection failed");
+    }
+    if(sp.auth(&sp.user,&sp.password)){
+        ui->message_11->setText("auth failed");
     }
     setFixedSize(1185,600);
     auto* layout = new QVBoxLayout();

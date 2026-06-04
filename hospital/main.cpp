@@ -4,11 +4,13 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
     NFD_Init();
     database dbb{};
-    QApplication a(argc, argv);
+    smtp sp;
 
-    MainWindow w(dbb);
+
+    MainWindow w(dbb,sp);
     w.show();
     return QApplication::exec();
 }

@@ -1,6 +1,7 @@
 #include "smtp.h"
 #include "libraries.h"
-
+#include <QtNetwork/QSslSocket>
+#include <QByteArray>
 QString smtp::sendcommand(QSslSocket* socket,   const QString& cmd){
     socket->write(cmd.toUtf8() + "\r\n");
     socket->waitForBytesWritten();
@@ -84,7 +85,7 @@ bool smtp::send(const QString& to,const QString& obj,const QString& body){
     socket.waitForReadyRead(3000);
     QString res2=QString::fromUtf8(socket.readAll());
     if(resp(res2)!=250){
-        return false
+        return false;
     }
 
 }

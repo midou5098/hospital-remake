@@ -19,7 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     database& db;
-    smtp& smtp;
+    smtp& sp;
     explicit MainWindow(database& dbo,class smtp& smtpo,QWidget *parent = nullptr);
     ~MainWindow() override;
 
