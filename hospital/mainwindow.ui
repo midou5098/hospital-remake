@@ -164,6 +164,19 @@
        <string>pull database</string>
       </property>
      </widget>
+     <widget class="QLabel" name="message_20">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>440</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="registr">
      <widget class="QPushButton" name="regist_but">
