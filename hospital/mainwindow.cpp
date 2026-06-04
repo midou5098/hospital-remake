@@ -388,17 +388,18 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 //<============================= search doctor==========================>
     connect(ui->search_doc,&QPushButton::clicked,this,[this]() {
+        doctor temp;
         if(ui->search_doctor_id->text()==""){
             ui->message_16->setText("enter a doctor id to search");
         }else{
-            doctor temp=db.search_doctor(ui->search_doctor_id->text().toInt(),db.doctor_found);
-            load_stab_doctor(*ui->search_doc_tab,temp);
-        }
-        //std::cout<< "dochas been loaded";
-
-
-    });
-
+            temp=db.search_doctor(ui->search_nurse_id->text().toInt(),db.doctor_found);
+            if(db.nurse_found){
+                load_stab_doctor(*ui->search_pat_tab,temp);
+            }else{
+                ui->message_18->setText("doctor not found");
+            }
+//std::cout<< "doc has been loaded";
+}});
 
 //<===================================searching nurse --------------->
     connect(ui->search_nur,&QPushButton::clicked,this,[this]() {
@@ -406,12 +407,15 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
             ui->message_18->setText("enter a nurse id to search");
         }else{
             nurse temp=db.search_nurse(ui->search_nurse_id->text().toInt(),db.nurse_found);
-            load_stab_nurse(*ui->search_nur_tab,temp);
-        }
+            if(db.nurse_found){
+                load_stab_nurse(*ui->search_nur_tab,temp);
+            }else{
+                ui->message_18->setText("nurse not found");
+            }
         //std::cout<< "dochas been loaded";
 
 
-    });
+    }});
 
 
 
@@ -421,11 +425,14 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
             ui->message_18->setText("enter a patient id to search");
         }else{
             patient temp=db.search_patient(ui->search_patient_id->text().toInt(),db.patient_found);
-            load_stab_patient(*ui->search_pat_tab,temp);
+            if(db.patient_found){
+                load_stab_patient(*ui->search_pat_tab,temp);
+            }else{
+                ui->message_18->setText("patient not found");
+            }
+
         }
-        //std::cout<< "dochas been loaded";
-
-
+        //std::cout<< "dochas been loaded"
     });
 
 
