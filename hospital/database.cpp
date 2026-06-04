@@ -419,6 +419,7 @@ doctor database::search_doctor(int id,bool& found){
         temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)),
         temp.months_left=sqlite3_column_int(stmt, 5);
         temp.nurse_count=sqlite3_column_int(stmt, 6);
+
     }else{
         found=false;
         sqlite3_finalize(stmt);
@@ -446,7 +447,9 @@ nurse database::search_nurse(int id,bool& found){
         temp.supervisor=sqlite3_column_int(stmt, 4),
         temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
         temp.patients_count=sqlite3_column_int(stmt,5);
-
+        temp.patients_cured=sqlite3_column_int(stmt,6);
+        temp.patients_dead=sqlite3_column_int(stmt,7);
+                std::cout<<"nurse found";
     }else{
         found=false;
         sqlite3_finalize(stmt);

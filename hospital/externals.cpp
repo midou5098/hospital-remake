@@ -115,8 +115,19 @@ void load_stab_doctor(QTableWidget& list,doctor temp){
 
 
 
-
-void load_stab_nurse(QTableWidget& list,nurse nur);
+void load_stab_nurse(QTableWidget& list,nurse temp){
+    std::cout<<"we re called;";
+    int s=list.rowCount();
+    list.insertRow(s);
+    list.setItem(s,0,new QTableWidgetItem(QString::number(temp.id)));
+    list.setItem(s,1,new QTableWidgetItem(QString::fromStdString(temp.name)));
+    list.setItem(s,2,new QTableWidgetItem(QString::number(temp.age)));
+    list.setItem(s,3,new QTableWidgetItem(QString::fromStdString(temp.sex)));
+    list.setItem(s,4,new QTableWidgetItem(QString::number(temp.supervisor)));
+    list.setItem(s,5,new QTableWidgetItem(QString::number(temp.patients_count)));
+    list.setItem(s,6,new QTableWidgetItem(QString::number(temp.patients_cured)));
+    list.setItem(s,7,new QTableWidgetItem(QString::number(temp.patients_dead)));
+}
 void load_stab_patients(QTableWidget& list,patient pat);
 
 

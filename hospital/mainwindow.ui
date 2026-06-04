@@ -2530,7 +2530,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;nurse id :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QPushButton" name="search_nur">
       <property name="geometry">
        <rect>
         <x>640</x>
@@ -2543,7 +2543,7 @@
        <string>search</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="search_nurse_id">
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -2563,7 +2563,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;search a doctor&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;search a nurse&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="back_14">
@@ -2579,12 +2579,12 @@
        <string>back</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_5">
+     <widget class="QTableWidget" name="search_nur_tab">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>190</x>
         <y>200</y>
-        <width>601</width>
+        <width>801</width>
         <height>281</height>
        </rect>
       </property>
@@ -2616,6 +2616,16 @@
       <column>
        <property name="text">
         <string>patients</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>patients cured</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>patients dead</string>
        </property>
       </column>
      </widget>

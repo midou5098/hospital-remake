@@ -400,7 +400,18 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
     });
 
 
+//<===================================searching nurse --------------->
+    connect(ui->search_nur,&QPushButton::clicked,this,[this]() {
+        if(ui->search_nurse_id->text()==""){
+            ui->message_18->setText("enter a nurse id to search");
+        }else{
+            nurse temp=db.search_nurse(ui->search_nurse_id->text().toInt(),db.nurse_found);
+            load_stab_nurse(*ui->search_nur_tab,temp);
+        }
+        //std::cout<< "dochas been loaded";
 
+
+    });
 
     //<================================== end of buttons mapping=======>
     //for (QLabel* lab:msgs){
