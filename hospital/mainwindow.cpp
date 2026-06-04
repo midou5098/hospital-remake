@@ -413,6 +413,31 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
     });
 
+
+
+    //<==================================patiento search------------------->
+    connect(ui->search_pat,&QPushButton::clicked,this,[this]() {
+        if(ui->search_patient_id->text()==""){
+            ui->message_18->setText("enter a patient id to search");
+        }else{
+            patient temp=db.search_patient(ui->search_patient_id->text().toInt(),db.patient_found);
+            load_stab_patient(*ui->search_pat_tab,temp);
+        }
+        //std::cout<< "dochas been loaded";
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
     //<================================== end of buttons mapping=======>
     //for (QLabel* lab:msgs){
       //  QString mesi=ui->id_login->text();
