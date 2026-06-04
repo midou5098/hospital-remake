@@ -24,7 +24,7 @@
      </rect>
     </property>
     <widget class="QWidget" name="login">
-     <widget class="QPushButton" name="pushButton_14">
+     <widget class="QPushButton" name="forgot">
       <property name="geometry">
        <rect>
         <x>530</x>

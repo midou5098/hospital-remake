@@ -85,6 +85,20 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
     connect(ui->mn,&QPushButton::clicked,this,[this]() { switchpg(13); });
     connect(ui->mp,&QPushButton::clicked,this,[this]() { switchpg(14); });
 
+
+     connect(ui->forgot,&QPushButton::clicked,this,[this]() {
+        if(ui->id_login->text()!=""){
+            if(sp.send("zeinbamdouni@gmail.com","heeelooo","ya33")){
+                ui->message_11->setText("sucess");
+            }
+        }
+
+    });
+
+
+
+
+
     connect(ui->sd,&QPushButton::clicked,this,[this]() { switchpg(15); });
     connect(ui->sn,&QPushButton::clicked,this,[this]() { switchpg(16); });
     connect(ui->sp,&QPushButton::clicked,this,[this]() { switchpg(17); });
