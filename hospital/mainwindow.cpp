@@ -360,23 +360,12 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
         }
         else if(ui->modify_p_id->text()!=""){
             temp=db.search_patient(ui->search_patient_up->text().toInt(),db.patient_found);
-        }if(db.patient_found){
-            load_prev_patient(*ui->previous_data_n,temp);
-            ui->message_15->setText("patient found");
-
-        }else{
-            ui->message_15->setText("not a valid patient id 0");
-        }
-    });
-
-
-
-
-
-
-
-
-
+            }if(db.patient_found){
+                load_prev_patient(*ui->previous_data_n,temp);
+                ui->message_15->setText("patient found");
+            }else{
+                ui->message_15->setText("not a valid patient id 0");
+            }
     });
     connect(ui->modify_patient_but,&QPushButton::clicked,this,[this](){
         if(ui->new_p_name->text()=="" || ui->new_p_age->text()=="" || ui->new_p_state->text()=="" || ui->new_p_disease->text()=="" || ui->new_p_payment->text()==""){
@@ -397,8 +386,18 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
 
 
 
+//<============================= search doctor==========================>
+    connect(ui->search_doc,&QPushButton::clicked,this,[this]() {
+        if(ui->search_doctor_id->text()==""){
+            ui->message_16->setText("enter a doctor id to search");
+        }else{
+            doctor temp=db.search_doctor(ui->search_doctor_id->text().toInt(),db.doctor_found);
+            load_stab_doctor(*ui->search_doc_tab,temp);
+        }
+        //std::cout<< "dochas been loaded";
 
 
+    });
 
 
 

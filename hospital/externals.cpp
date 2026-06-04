@@ -101,7 +101,23 @@ void load_prev_patient(QTableWidget& list,patient pat){
 
 
 
+void load_stab_doctor(QTableWidget& list,doctor temp){
+    int s=list.rowCount();
+    list.insertRow(s);
+    list.setItem(s,0,new QTableWidgetItem(QString::number(temp.id)));
+    list.setItem(s,1,new QTableWidgetItem(QString::fromStdString(temp.name)));
+    list.setItem(s,2,new QTableWidgetItem(QString::number(temp.age)));
+    list.setItem(s,3,new QTableWidgetItem(QString::fromStdString(temp.sex)));
+    list.setItem(s,4,new QTableWidgetItem(QString::fromStdString(temp.level)));
+    list.setItem(s,5,new QTableWidgetItem(QString::number(temp.months_left)));
+    list.setItem(s,6,new QTableWidgetItem(QString::number(temp.nurse_count)));
+}
 
+
+
+
+void load_stab_nurse(QTableWidget& list,nurse nur);
+void load_stab_patients(QTableWidget& list,patient pat);
 
 
 
