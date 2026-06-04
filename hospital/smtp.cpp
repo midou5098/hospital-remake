@@ -44,6 +44,49 @@ bool smtp::auth(const QString* user,const QString* password){
     if(resp(res1)!=334){
         return false;
     }
+    QString ep=password->toUtf8().toBase64();
+    QString res2=sendcommand(&socket,ep);
+    if(resp(res2)!=235){
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+bool smtp::send(const QString& to,const QString& obj,const QString& body){
+    QString res=sendcommand(&socket,"MAIL FROM:<"+user+">");
+    if(resp(res)!=250){
+        return false;
+    }
+    QString res1=sendcommand(&socket,"RCPT To:<" + to);
+    if(resp(res1)!=250){
+        return false;
+    }
+    QString res3=sendcommand(&socket,"DATA");
+    if(resp(res3)!=354){
+        return false;
+    }
+    QString message;
+    message += "From: "+ user+ "\r\n";
+    message += "To: "+to      + "\r\n";
+    message += "Subject: " + obj + "\r\n";
+    message += "MIME-Version: 1.0\r\n";
+    message += "Content-Type: text/plain; charset=UTF-8\r\n";
+    message += "\r\n";
+    message += body + "\r\n";
+    message += ".\r\n";
+    socket.write(message.toUtf8());
+    socket.waitForBytesWritten();
+    socket.waitForReadyRead(3000);
+    QString res2=QString::fromUtf8(socket.readAll());
+    if(resp(res2)!=250){
+        return false
+    }
+
 }
 
 
@@ -62,9 +105,4 @@ bool smtp::auth(const QString* user,const QString* password){
 
 
 
-
-
-
-
-bool send(const QString* to,const QString* obj,const QString* body);
 void disconnect();
