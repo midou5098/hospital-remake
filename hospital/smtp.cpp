@@ -15,9 +15,12 @@ int smtp::resp(QString response){
 bool smtp::connect(const QString& host,int port){
     socket.setProtocol(QSsl::TlsV1_2OrLater);
     socket.connectToHostEncrypted(host,port);
+
     if(!socket.waitForEncrypted(3000)){
         return false;
     }
+    socket.waitForReadyRead(3000);
+    socket.readAll();
 
     QString res=sendcommand(&socket,"EHLO localhost");
     if(resp(res)!=250){
@@ -63,7 +66,7 @@ bool smtp::send(const QString& to,const QString& obj,const QString& body){
     if(resp(res)!=250){
         return false;
     }
-    QString res1=sendcommand(&socket,"RCPT To:<" + to);
+    QString res1=sendcommand(&socket,"RCPT To:<" + to+">");
     if(resp(res1)!=250){
         return false;
     }

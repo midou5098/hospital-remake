@@ -29,9 +29,13 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
     }
     if(!sp.connect("smtp.gmail.com", 465)){
         ui->message_11->setText("connection failed");
+    }else{
+        ui->message_11->setText("connection sucess");
     }
-    if(sp.auth(&sp.user,&sp.password)){
-        ui->message_11->setText("auth failed");
+    if(!sp.auth(&sp.user,&sp.password)){
+        ui->message_20->setText("auth failed");
+    }else{
+        ui->message_20->setText("auth succes");
     }
     setFixedSize(1185,600);
     auto* layout = new QVBoxLayout();
