@@ -24,15 +24,47 @@ bool smtp::connect(const QString& host,int port){
     }else{
         return true;
     }
-
-
-
-
-
-
-
-
 }
-bool auth(const QString* user,const QString* password);
+
+
+
+
+
+
+
+
+bool smtp::auth(const QString* user,const QString* password){
+    QString res=sendcommand(&socket,"AUTH LOGIN");
+    if(resp(res)!=334){
+        return false;
+
+    }
+    QString eu=user->toUtf8().toBase64();
+    QString res1=sendcommand(&socket,eu);
+    if(resp(res1)!=334){
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 bool send(const QString* to,const QString* obj,const QString* body);
 void disconnect();
