@@ -9,5 +9,5 @@ void load_list_patients(QTableWidget& list,std::vector<patient> patvec);
 
 void load_prev_doctor(QTableWidget& list,doctor doc);
 void load_prev_nurse(QTableWidget& list,nurse nur);
-void load_prev_patient(QTableWidget& list,doctor pat);
+void load_prev_patient(QTableWidget& list,patient pat);
 #endif // EXTERNALS_H

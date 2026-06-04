@@ -484,8 +484,6 @@ patient database::search_patient(int id,bool& found){
     }
     sqlite3_finalize(stmt);
     return temp;
-
-
 }
 
 //======================listing dem data

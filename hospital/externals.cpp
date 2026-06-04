@@ -84,7 +84,21 @@ void load_prev_nurse(QTableWidget& list,nurse nur){
 }
 
 
-void load_prev_patient(QTableWidget& list,nurse pat);
+void load_prev_patient(QTableWidget& list,patient pat){
+    int s=list.columnCount();
+    list.insertColumn(s);
+    list.setItem(0,0,new QTableWidgetItem(QString::number(pat.id)));
+    list.setItem(1,0,new QTableWidgetItem(QString::fromStdString(pat.name)));
+    list.setItem(2,0,new QTableWidgetItem(QString::number(pat.age)));
+    list.setItem(3,0,new QTableWidgetItem(QString::fromStdString(pat.sex)));
+    list.setItem(4,0,new QTableWidgetItem(QString::fromStdString(pat.state)));
+    list.setItem(5,0,new QTableWidgetItem(QString::number(pat.disease)));
+    list.setItem(6,0,new QTableWidgetItem(QString::number(pat.payment)));
+    list.setItem(7,0,new QTableWidgetItem(QString::number(pat.nurse)));
+
+
+}
+
 
 
 

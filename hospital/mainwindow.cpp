@@ -331,27 +331,67 @@ MainWindow::MainWindow(database& dbo,QWidget *parent)
             ui->message_14->setText("not a valid doctor id");
         }else{
             nurse temp;
-            temp.name=ui->new_d_name->text().toStdString();
-            temp.age=ui->new_d_age->text().toInt();
+            temp.name=ui->new_n_name->text().toStdString();
+            temp.age=ui->new_n_age->text().toInt();
             temp.supervisor=ui->new_n_super->text().toInt();
             if(db.modify_nurse(ui->modify_nurse_id->text().toInt(),temp)){
                 ui->message_14->setText("nurse modified .");
             }else{
                 ui->message_14->setText("something went wrong , check your data ");
             }
+}});
+
+
+
+
+
+
+
+
+
+
+//<=============================modify patient===============================>
+
+
+    connect(ui->search_patient_up,&QPushButton::clicked,this,[this] (){
+        patient temp;
+        if(ui->search_patient_up->text()==""){
+            ui->message_14->setText("type an id to search ! ");
+        }
+        else{
+        temp=db.search_patient(ui->search_patient_up->text().toInt(),db.patient_found);
+        }if(db.patient_found){
+            load_prev_patient(*ui->previous_data_n,temp);
+            ui->message_14->setText("patient found");
+
+        }else{
+            ui->message_14->setText("not a valid patient id 0");
+        }
+
+
+
+
+
+
+
+
+    });
+    connect(ui->modify_patient_but,&QPushButton::clicked,this,[this](){
+        if(ui->new_p_name->text()=="" || ui->new_p_age->text()=="" || ui->new_p_state->text()=="" || ui->new_p_disease->text()=="" || ui->new_p_payment->text()==""){
+            ui->message_15->setText("fill all the fields please !");
+        }else if(db.patient_found){
+            patient temp;
+            temp.name=ui->new_p_name->text().toStdString();
+            temp.age=ui->new_p_age->text().toInt();
+            temp.state=ui->new_p_state->text().toInt();
+            temp.disease=ui->new_p_disease->text().toInt();
+            temp.payment=ui->new_p_payment->text().toInt();
+            if(db.modify_patient(ui->modify_p_id->text().toInt(),temp)){
+                ui->message_15->setText("patient modified .");
+            }else{
+                ui->message_15->setText("something went wrong , check your data ");
+            }
         }});
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

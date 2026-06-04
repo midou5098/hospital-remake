@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>-1</x>
-      <y>0</y>
+      <y>10</y>
       <width>1211</width>
       <height>571</height>
      </rect>
@@ -2127,7 +2127,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="modify_p">
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="search_patient_up">
       <property name="geometry">
        <rect>
         <x>620</x>
@@ -2140,7 +2140,7 @@
        <string>search</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_10">
+     <widget class="QLineEdit" name="new_p_age">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -2202,7 +2202,7 @@
        <string>back</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_16">
+     <widget class="QLineEdit" name="modify_p_id">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -2225,7 +2225,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;previous data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QPushButton" name="modify_patient_but">
       <property name="geometry">
        <rect>
         <x>520</x>
@@ -2251,7 +2251,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; font-style:italic;&quot;&gt;modify patient&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_18">
+     <widget class="QLineEdit" name="new_p_name">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -2261,62 +2261,62 @@
        </rect>
       </property>
      </widget>
-     <widget class="QListWidget" name="listWidget_3">
+     <widget class="QTableWidget" name="prev_p_data">
       <property name="geometry">
        <rect>
         <x>830</x>
         <y>220</y>
         <width>241</width>
-        <height>141</height>
+        <height>241</height>
        </rect>
       </property>
-      <item>
+      <row>
        <property name="text">
         <string>id</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>name</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>age</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>sex</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>disease </string>
-       </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
         <string>state</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
        <property name="text">
-        <string>payment left </string>
+        <string>state</string>
        </property>
-      </item>
-      <item>
+      </row>
+      <row>
+       <property name="text">
+        <string>payment</string>
+       </property>
+      </row>
+      <row>
        <property name="text">
         <string>nurse id</string>
        </property>
-      </item>
+      </row>
      </widget>
      <widget class="QLabel" name="label_24">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>50</x>
         <y>340</y>
-        <width>181</width>
+        <width>161</width>
         <height>31</height>
        </rect>
       </property>
@@ -2324,7 +2324,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;new disease : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_19">
+     <widget class="QLineEdit" name="new_p_disease">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -2347,7 +2347,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;new payment left: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_20">
+     <widget class="QLineEdit" name="new_p_payment">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -2370,7 +2370,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; font-style:italic; text-decoration: underline;&quot;&gt;new state: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_21">
+     <widget class="QLineEdit" name="new_p_state">
       <property name="geometry">
        <rect>
         <x>210</x>

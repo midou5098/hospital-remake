@@ -7,7 +7,7 @@ private:
     sqlite3* db,*adm;
 
 public:
-    bool pulled=false,nurse_found=false,doctor_found=false,patient_false=false;
+    bool pulled=false,nurse_found=false,doctor_found=false,patient_found=false;
     database();
 
     bool check_super(int id);
