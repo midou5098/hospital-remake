@@ -1,10 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "libraries.h"
-MainWindow::MainWindow(database& dbo,QWidget *parent)
+#include "smtp.h";
+MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),db(dbo)
+    , ui(new Ui::MainWindow),db(dbo),smtp(smtpo)
 {
+    if(!smtp.connect("smtp.gmail.com", 465)){
+
+    }
+    smtp.auth(&smtp.user,&smtp.password);
+
 //i was going to use a back_1 back_2 back_3 etc  buttons with the same repeated fonction and connection for 16 times to send the user to page 2 (main menu) but i discovered that i can group the buttons and use findchild
     ui->setupUi(this);
     QButtonGroup *backbuts= new QButtonGroup(this);

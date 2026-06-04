@@ -13,6 +13,7 @@ public:
     bool send(const QString* to,const QString* obj,const QString* body);
     void disconnect();
     QString sendcommand(QSslSocket* socket,   const QString& cmd);
+    int resp(QString response);
 };
 
 #endif // SMTP_H

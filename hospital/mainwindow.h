@@ -5,7 +5,7 @@
 #include <QPushButton>
 #include <QButtonGroup>
 #include <QVBoxLayout>
-
+#include "smtp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,7 +19,8 @@ class MainWindow : public QMainWindow
 
 public:
     database& db;
-    explicit MainWindow(database& dbo,QWidget *parent = nullptr);
+    smtp& smtp;
+    explicit MainWindow(database& dbo,class smtp& smtpo,QWidget *parent = nullptr);
     ~MainWindow() override;
 
 private:
