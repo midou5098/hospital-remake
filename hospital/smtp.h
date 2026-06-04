@@ -12,6 +12,7 @@ public:
     bool auth(const QString* user,const QString* password);
     bool send(const QString* to,const QString* obj,const QString* body);
     void disconnect();
+    QString sendcommand(QSslSocket* socket,   const QString& cmd);
 };
 
 #endif // SMTP_H
