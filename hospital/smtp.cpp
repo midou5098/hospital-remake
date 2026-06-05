@@ -90,6 +90,7 @@ bool smtp::send(const QString& to,const QString& obj,const QString& body){
     if(resp(res2)!=250){
         return false;
     }
+    return true;
 
 }
 

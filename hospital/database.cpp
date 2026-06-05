@@ -81,15 +81,16 @@ bool database::check_id(int id){
 }
 admin database::get_admin(int id){
     sqlite3_stmt* stmt;
+    admin temp;
     const char* sql="SELECT * FROM admin WHERE id=?;";
     sqlite3_prepare_v2(adm,sql,-1,&stmt,nullptr);
-    admin temp;
+
     sqlite3_bind_int(stmt,1,id);
 
     sqlite3_step(stmt);
-    temp.id=sqlite3_column_int(stmt,1);
-    temp.passwd=reinterpret_cast<const char*>(sqlite3_column_text(stmt,2));
-    temp.gmail=reinterpret_cast<const char*>(sqlite3_column_text(stmt,3));
+    temp.id=sqlite3_column_int(stmt,0);
+    temp.passwd=reinterpret_cast<const char*>(sqlite3_column_text(stmt,1));
+    temp.gmail=reinterpret_cast<const char*>(sqlite3_column_text(stmt,2));
 
     return temp;
 }

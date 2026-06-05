@@ -89,13 +89,13 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
      connect(ui->forgot,&QPushButton::clicked,this,[this]() {
         if(ui->id_login->text()!=""){
             if(!db.check_id(ui->id_login->text().toInt())){
-                ui->message_11->setText("enter a valid id please!");
+                ui->message_35->setText("enter a valid id please!");
             }else {
                 admin g=db.get_admin(ui->id_login->text().toInt());
-                if(sp.send(QString::fromStdString(g.gmail),"chernobyl login password","hello user with id : "+QString::fromStdString(std::to_string(g.id))+", your passwrodd is "+QString::fromStdString(g.passwd))){
-                    ui->message_11->setText("email sent to your gmail!");
+                if(sp.send(QString::fromStdString(g.gmail),QString("chernobyl login password"),"hello user with id : "+QString::number(g.id)+", your passwrodd is "+QString::fromStdString(g.passwd))){
+                    ui->message_35->setText("email sent to your gmail!");
                 }else{
-                    ui->message_11->setText("your gmail was not valid!");
+                    ui->message_35->setText("your gmail was not valid!");
     }}}});
 
 
