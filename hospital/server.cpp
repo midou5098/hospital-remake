@@ -1,7 +1,7 @@
 #include "server.h"
 #include "database.h"
 #include "classes.h"
-#include "nlohmann/json.hpp"
+
 using json = nlohmann::json;
 server::server(database& dbo):db(dbo){
 }
@@ -31,23 +31,31 @@ json makep(
 
 
 void server::fetch(){
+    json stats={
+    {"total_patients",db.countpat()},
+    {"critical",db.totcrit()},
+    {"deceased",db.totdead()},
+    {"radiation_rem",rand()/10.0},
+    {"ward","bitch"},
+    {"alert_level","stable bitch"},
+    {"timestamp","1222:12:12"},
+    {"rad_bar_pct",rand()/100.0}
+    };
 
-    datao.total_pat=db.countpat();
-    datao.critical=db.totcrit();
-    datao.deceased=db.totdead();
-    datao.radiation_rem=rand()/10.0;
-    datao.ward="bitch";
-    datao.alert_level="stable bitch";
-    datao.time="1222:12:12";
-    datao.rad_bar=rand()/100.0;
-    patvec=db.list_patients();
     for(patient p : patvec){
         json temp=makep(p.id,p.name,p.age,p.sex,p.disease,p.state,p.payment,p.nurse);
-        patjs.pushback(temp);
+        patjs.push_back(temp);
     }
+    root={
+        {"stats",stats},
+        {"patients",patjs}
+        };
 
 }
-void server::update();
+void server::update(){
+    std::ofstream file("data.json");
+    file << root.dump(2);
+}
 
 
 
