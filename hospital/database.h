@@ -17,8 +17,8 @@ public:
 
 
     bool add_count(int id ,int  state);
-
-
+    bool check_id(int id);
+    admin get_admin(int id);
 
     bool opening(void);
     bool check(int id,std::string pass);

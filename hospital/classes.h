@@ -46,6 +46,11 @@ class disease{
     std::string description;
 };
 
-
+class admin{
+public:
+    int id;
+    std::string passwd;
+    std::string gmail;
+};
 
 #endif // CLASSES_H

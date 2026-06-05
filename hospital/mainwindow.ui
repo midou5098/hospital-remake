@@ -141,7 +141,7 @@
      <widget class="QLabel" name="message_11">
       <property name="geometry">
        <rect>
-        <x>980</x>
+        <x>10</x>
         <y>510</y>
         <width>171</width>
         <height>31</height>
@@ -167,8 +167,8 @@
      <widget class="QLabel" name="message_20">
       <property name="geometry">
        <rect>
-        <x>940</x>
-        <y>440</y>
+        <x>10</x>
+        <y>470</y>
         <width>251</width>
         <height>31</height>
        </rect>

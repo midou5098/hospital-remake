@@ -88,8 +88,11 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
 
      connect(ui->forgot,&QPushButton::clicked,this,[this]() {
         if(ui->id_login->text()!=""){
-            if(sp.send("zeinbamdouni@gmail.com","heeelooo","ya33")){
-                ui->message_11->setText("sucess");
+            if(!db.check_id(ui->id_login->text().toStdString())){
+                ui->message_11->setText("enter a valid id please!");
+            }else {
+                admin g=db.get_admin(ui->id_login->text().toStdString());
+                if(sp.send(g.email,"chernobyl login password","hello user with id : "+g.id+", your passwrodd is "+g.passwd));
             }
         }
 
@@ -111,6 +114,8 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
     connect(ui->login_button,&QPushButton::clicked,this,[this]() {
         if(!db.pulled){
                 ui->message->setText("no database pulled");
+        }else if(ui->id_login->text()=="" || ui->login_passwd->text()==""){
+            ui->message->setText("fill all fields please !");
         }else if(db.check(ui->id_login->text().toInt(),ui->login_passwd->text().toStdString()) && db.pulled){
             switchpg(2);
         }else{
@@ -127,7 +132,9 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
         if(ui->regist_email->text()=="" || ui->regist_passwd->text()=="" || ui->cm_password->text()=="" || ui->regist_id->text()==""){
             ui->message_16->setText("please fill all the fields!");
         }else if(ui->regist_passwd->text()!=ui->cm_password->text()) {
-            ui->message_16->setText("passwords are not matching ");
+            ui->message_16->setText("passwords are not matching");
+        }else if(!ui->regist_email->text().contains("@gmail.com")) {
+            ui->message_16->setText("not a valid gmail ");
         }else if(db.registr(ui->regist_id->text().toInt(),ui->cm_password->text().toStdString(),ui->regist_email->text().toStdString())){
             ui->message_16->setText("success ! you may now login.");
         }else{
