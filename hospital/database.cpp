@@ -417,7 +417,17 @@ bool database::add_patient(patient patient){
 
 
 
+int database::countpat(){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT COUNT(*) FROM patients;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    int tot;
+    tot=sqlite3_column_int(stmt,0);
+    return tot
 
+}
+void totcrit();
+void totdead();
 
 
 

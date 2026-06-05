@@ -20,6 +20,17 @@ public:
     bool check_id(int id);
     admin get_admin(int id);
 
+    int countpat();
+    int totcrit();
+    int totdead();
+
+
+
+
+
+
+
+
     bool opening(void);
     bool check(int id,std::string pass);
     bool registr(int id,std::string passwd,std::string gmail);

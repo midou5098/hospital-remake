@@ -56,6 +56,7 @@ public:
 
 
 class all_data{
+public:
     int total_pat;
     int critical;
     int deceased;

@@ -60,6 +60,7 @@ target_include_directories(hospital PRIVATE ${GTK3_INCLUDE_DIRS})
 
 target_link_directories(hospital PRIVATE
     /home/bro/my-creations/banks-system
+    /home/bro/my-creations/hospital-remake/nlohmann
 )
 pkg_check_modules(GTK3 REQUIRED IMPORTED_TARGET gtk+-3.0)
 target_link_libraries(hospital PRIVATE

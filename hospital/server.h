@@ -3,8 +3,8 @@
 #include "libraries.h"
 class server{
 public:
-    all_data data;
-    FILE* file;
+    all_data datao;
+    FILE* fileo;
     void fetch();
     void update();
 };
