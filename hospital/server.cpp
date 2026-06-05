@@ -2,35 +2,36 @@
 #include "database.h"
 #include "classes.h"
 #include "nlohmann/json.hpp"
-
+using json = nlohmann::json;
 server::server(database& dbo):db(dbo){
 }
 
 
-nlohmann::json makep(
-    const std::string& id,
-    const std::string& name,
-    float dose_rem,
-    const std::string& ward,
-    const std::string& status,
-    const std::string& admitted,
-    bool deceased,
-    const std::string& notes = ""){
+json makep(
+    int id,
+    std::string name,
+    int age,
+    std::string sex,
+    int disease,
+    std::string state,
+    int pay,
+    int nurse){
     return {
         {"id",       id},
             {"name",     name},
-            {"dose_rem", dose_rem},
-            {"ward",     ward},
-            {"status",   status},
-            {"admitted", admitted},
-            {"deceased", deceased},
-            {"notes",    notes}
+            {"age", age},
+            {"sex",     sex},
+            {"disease",   disease},
+            {"state", state},
+            {"pay ", pay},
+            {"nurse",    nurse}
     };
 }
 
 
 
 void server::fetch(){
+
     datao.total_pat=db.countpat();
     datao.critical=db.totcrit();
     datao.deceased=db.totdead();
@@ -39,6 +40,12 @@ void server::fetch(){
     datao.alert_level="stable bitch";
     datao.time="1222:12:12";
     datao.rad_bar=rand()/100.0;
+    patvec=db.list_patients();
+    for(patient p : patvec){
+        json temp=makep(p.id,p.name,p.age,p.sex,p.disease,p.state,p.payment,p.nurse);
+        patjs.pushback(temp);
+    }
+
 }
 void server::update();
 
