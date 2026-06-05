@@ -31,6 +31,9 @@ json makep(
 
 
 void server::fetch(){
+    patjs = json::array();
+    if (db.pulled){
+    patvec=db.list_patients();
     json stats={
     {"total_patients",db.countpat()},
     {"critical",db.totcrit()},
@@ -51,9 +54,9 @@ void server::fetch(){
         {"patients",patjs}
         };
 
-}
+    }}
 void server::update(){
-    std::ofstream file("data.json");
+    std::ofstream file("/home/bro/my-creations/hospital-remake/hospital/data.json");
     file << root.dump(2);
 }
 

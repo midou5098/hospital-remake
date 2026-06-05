@@ -10,7 +10,7 @@ public:
 
     database& db;
     all_data datao;
-    FILE fileo;
+    FILE* fileo;
     server(database& dbo);
     void fetch();
     void update();

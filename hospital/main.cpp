@@ -11,7 +11,12 @@ int main(int argc, char *argv[])
     server ser{dbb};
 
 
-    MainWindow w(dbb,sp,ser);
+    MainWindow w(dbb,sp);
     w.show();
+    ser.fetch();
+    ser.update();
+
     return QApplication::exec();
+
+
 }

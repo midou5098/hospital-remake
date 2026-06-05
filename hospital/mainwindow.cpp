@@ -2,9 +2,9 @@
 #include "ui_mainwindow.h"
 #include "libraries.h"
 #include "smtp.h";
-MainWindow::MainWindow(database& dbo,class smtp& smtpo,class server& servo,QWidget *parent)
+MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),db(dbo),sp(smtpo),servio(servo)
+    , ui(new Ui::MainWindow),db(dbo),sp(smtpo)
 {
 
 
