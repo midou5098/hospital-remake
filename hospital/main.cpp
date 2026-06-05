@@ -8,9 +8,10 @@ int main(int argc, char *argv[])
     NFD_Init();
     database dbb{};
     smtp sp;
+    server ser{dbb};
 
 
-    MainWindow w(dbb,sp);
+    MainWindow w(dbb,sp,ser);
     w.show();
     return QApplication::exec();
 }

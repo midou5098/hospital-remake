@@ -3,8 +3,10 @@
 #include "libraries.h"
 class server{
 public:
+    database& db;
     all_data datao;
     FILE* fileo;
+    server(database& dbo);
     void fetch();
     void update();
 };
