@@ -11,6 +11,8 @@
 #include "externals.h"
 #include <QtNetwork/QSslSocket>
 #include <QByteArray>
+#include <stdio.h>
+#include "classes.h"
 
 
 

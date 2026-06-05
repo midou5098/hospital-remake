@@ -53,4 +53,33 @@ public:
     std::string gmail;
 };
 
+
+
+class all_data{
+    int total_pat;
+    int critical;
+    int deceased;
+    int radiation_rem;
+    std::string ward;
+    std::string alert_level;
+    std::string time;
+    float rad_bar;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif // CLASSES_H
