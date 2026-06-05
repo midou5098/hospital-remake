@@ -421,13 +421,37 @@ int database::countpat(){
     sqlite3_stmt* stmt;
     const char* sql="SELECT COUNT(*) FROM patients;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
-    int tot;
+    int tot=0;
+    sqlite3_step(stmt);
     tot=sqlite3_column_int(stmt,0);
-    return tot
+    return tot;
 
 }
-void totcrit();
-void totdead();
+int database::totcrit(){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT * FROM patients;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    int tot=0;
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        if(reinterpret_cast<const char*>(sqlite3_column_text(stmt,5))=="critical"){
+            tot+=1;
+        }
+    }
+    return tot;
+
+}
+int database::totdead(){
+    sqlite3_stmt* stmt;
+    const char* sql="SELECT * FROM nurses;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    int tot=0;
+    while(sqlite3_step(stmt)==SQLITE_ROW){
+        tot+=tot=sqlite3_column_int(stmt,7);
+    }
+
+    return tot;
+
+}
 
 
 
