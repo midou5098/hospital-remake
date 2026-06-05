@@ -31,7 +31,7 @@ public:
 
 
 
-    bool opening(void);
+    bool opening();
     bool check(int id,std::string pass);
     bool registr(int id,std::string passwd,std::string gmail);
 

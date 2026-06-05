@@ -2,9 +2,9 @@
 #include "ui_mainwindow.h"
 #include "libraries.h"
 #include "smtp.h";
-MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
+MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow),db(dbo),sp(smtpo)
+    , ui(new Ui::MainWindow),db(dbo),sp(smtpo),sv(servio)
 {
 
 
@@ -167,6 +167,10 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,QWidget *parent)
             ui->message->setText("database imported successfully!");
         }else{
             ui->message->setText("import failed");
+        }
+        if(db.pulled){
+            sv.fetch();
+            sv.update();
         }
 
 

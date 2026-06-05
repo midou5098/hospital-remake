@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-
+bool pull=false;
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     NFD_Init();
     database dbb{};
@@ -11,10 +12,10 @@ int main(int argc, char *argv[])
     server ser{dbb};
 
 
-    MainWindow w(dbb,sp);
+    MainWindow w(dbb,sp,ser);
+
     w.show();
-    ser.fetch();
-    ser.update();
+
 
     return QApplication::exec();
 

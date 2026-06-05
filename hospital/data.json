@@ -1,1 +1,54 @@
-null
+{
+  "patients": [
+    {
+      "age": -67072768,
+      "disease": 1,
+      "id": 2,
+      "name": "alan",
+      "nurse": 2,
+      "pay ": 247154432,
+      "sex": "",
+      "state": "state"
+    },
+    {
+      "age": -67072768,
+      "disease": 1,
+      "id": 3,
+      "name": "alan",
+      "nurse": 2,
+      "pay ": 247154432,
+      "sex": "",
+      "state": "state"
+    },
+    {
+      "age": -67072768,
+      "disease": 1,
+      "id": 4,
+      "name": "alan",
+      "nurse": 2,
+      "pay ": 247154432,
+      "sex": "",
+      "state": "state"
+    },
+    {
+      "age": -67072768,
+      "disease": 1,
+      "id": 5,
+      "name": "alan",
+      "nurse": 2,
+      "pay ": 247154432,
+      "sex": "",
+      "state": "state"
+    }
+  ],
+  "stats": {
+    "alert_level": "stable bitch",
+    "critical": 0,
+    "deceased": 4,
+    "rad_bar_pct": 8469308.86,
+    "radiation_rem": 180428938.3,
+    "timestamp": "1222:12:12",
+    "total_patients": 4,
+    "ward": "bitch"
+  }
+}

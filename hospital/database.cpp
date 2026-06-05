@@ -314,7 +314,7 @@ bool database::add_count(int id ,int  state){
 
 
 //repo seemed big and frustrating at first but then i aknowldged it being just a big backend
-bool database::opening(void){
+bool database::opening(){
 
 
 
