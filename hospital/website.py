@@ -7,7 +7,14 @@ from urllib.parse import urlparse
 class handler(SimpleHTTPRequestHandler):
     def do_GET(self):
         parsed=self.path
-        if parsed=="/records":
+        if parsed=="/":
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            with open("index.html","r",encoding="utf_8")as p:
+                html=p.read()
+            self.wfile.write(html.encode())
+        elif parsed=="/records":
             self.send_response(200)
             self.send_header("Content-type","application/json")
             self.send_header("Cache-Control","no-Cache,must-revalidate")
