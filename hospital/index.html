@@ -16,11 +16,10 @@
       .live-dot.offline { background: #ef4444; }
       @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
       @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-      .spin { animation: spin 4s linear infinite; }
       main { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
       .alert { border: 1px solid rgba(239,68,68,0.5); background: rgba(239,68,68,0.1); border-radius: 2px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
       .alert p { font-size: 11px; color: #ef4444; text-transform: uppercase; letter-spacing: 0.15em; }
-      .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px; }
+      .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
       @media(max-width:900px){ .stats-grid { grid-template-columns: repeat(3,1fr); } }
       @media(max-width:600px){ .stats-grid { grid-template-columns: repeat(2,1fr); } }
       .stat-card { border: 1px solid #2a3d2a; background: #111811; border-radius: 2px; padding: 16px; }
@@ -31,14 +30,7 @@
       .stat-card.danger .stat-value { color: #ef4444; }
       .stat-card.warning .stat-value { color: #facc15; }
       .stat-sub { font-size: 10px; color: #6b7280; margin-top: 2px; }
-      .rad-bar-wrap { border: 1px solid #2a3d2a; border-radius: 2px; padding: 16px; margin-bottom: 24px; }
-      .rad-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.15em; }
-      .rad-bar-track { height: 8px; background: #1f2d1f; border-radius: 9999px; overflow: hidden; }
-      .rad-bar-fill { height: 100%; border-radius: 9999px; background: #4ade80; transition: width 0.8s ease; }
-      .rad-bar-fill.warn { background: #eab308; }
-      .rad-bar-fill.crit { background: #ef4444; }
-      .rad-bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: #6b7280; margin-top: 4px; }
-      .error-box { border: 1px solid #ef4444; background: rgba(239,68,68,0.1); border-radius: 2px; padding: 12px 16px; margin-bottom: 24px; }
+      .error-box { border: 1px solid #ef4444; background: rgba(239,68,68,0.1); border-radius: 2px; padding: 12px 16px; margin-bottom: 24px; display: none; }
       .error-box p { color: #ef4444; font-size: 13px; }
       .error-box small { color: #6b7280; font-size: 11px; display: block; margin-top: 4px; }
       .table-wrap { border: 1px solid #2a3d2a; border-radius: 2px; overflow: hidden; margin-bottom: 24px; }
@@ -52,47 +44,227 @@
       tbody tr:hover { background: rgba(31,45,31,0.2); }
       td { padding: 12px 16px; }
       td.patient-num { color: #4ade80; font-weight: bold; }
-      td.dead { color: #ef4444; }
-      td.extra { color: #6b7280; }
+      td.state-critical { color: #ef4444; }
+      td.state-stable   { color: #4ade80; }
+      td.state-other    { color: #6b7280; }
+      td.sex-col        { color: #6b7280; text-transform: uppercase; font-size: 11px; }
+      .badge { display: inline-block; padding: 2px 8px; border-radius: 2px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: bold; }
+      .badge-m { border: 1px solid rgba(74,222,128,0.3); color: #4ade80; }
+      .badge-f { border: 1px solid rgba(167,139,250,0.3); color: #a78bfa; }
+      .badge-t { border: 1px solid rgba(74,222,128,0.3); color: #4ade80; }
+      .payment-col { color: #facc15; }
       .empty { padding: 64px 16px; text-align: center; color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.15em; }
       footer { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #6b7280; border-top: 1px solid #2a3d2a; padding-top: 16px; padding-bottom: 32px; text-transform: uppercase; letter-spacing: 0.15em; }
       footer .ts { color: #4ade80; font-weight: bold; }
       svg.rad-icon { width: 20px; height: 20px; fill: currentColor; }
-    </style>
+      .loading { padding: 48px 16px; text-align: center; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; animation: pulse 1.5s infinite; }
+  </style>
 </head>
 <body>
   <div class="scanline"></div>
   <header>
     <div class="header-left">
-      <span style="color:#4ade80;animation:spin 4s linear infinite;display:inline-block"><svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor"><circle cx="50" cy="50" r="8"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/></svg></span>
+      <span style="color:#4ade80;animation:spin 4s linear infinite;display:inline-block">
+        <svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor">
+          <circle cx="50" cy="50" r="8"/>
+          <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/>
+          <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/>
+          <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/>
+        </svg>
+      </span>
       <div>
         <div class="header-title">Pripyat Medical Complex</div>
         <div class="header-sub">ЧЕРНОБЫЛЬ · UNIT 4 RESPONSE WARD</div>
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:16px">
-      <div style="display:flex;align-items:center;gap:8px">
-        <span class="live-dot offline"></span>
-        <span style="font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.15em">OFFLINE</span>
+      <div style="display:flex;align-items:center;gap:8px" id="status-dot-wrap">
+        <span class="live-dot offline" id="status-dot"></span>
+        <span style="font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.15em" id="status-text">OFFLINE</span>
       </div>
-      <span style="font-size:11px;color:#6b7280;border:1px solid #2a3d2a;padding:4px 8px;border-radius:2px">SNAPSHOT 10:06:49</span>
+      <span style="font-size:11px;color:#6b7280;border:1px solid #2a3d2a;padding:4px 8px;border-radius:2px" id="snapshot-time">SNAPSHOT --:--:--</span>
     </div>
   </header>
+
   <main>
-    <div class="alert"><svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor"><circle cx="50" cy="50" r="8"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/></svg><p>⚠ RADIATION EMERGENCY PROTOCOL ACTIVE — APRIL 26, 1986 — ALL PERSONNEL MAINTAIN DOSIMETRY RECORDS</p></div>
-    
-    <div class="error-box"><p>✕ SYSTEM ERROR: Connection failure: NetworkError when attempting to fetch resource.</p><small>Data shown may be stale. Check that the data server is running on port 8000.</small></div>
+    <div class="alert">
+      <svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor">
+        <circle cx="50" cy="50" r="8"/>
+        <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/>
+        <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/>
+        <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/>
+      </svg>
+      <p>⚠ RADIATION EMERGENCY PROTOCOL ACTIVE — APRIL 26, 1986 — ALL PERSONNEL MAINTAIN DOSIMETRY RECORDS</p>
+    </div>
+
+    <div class="error-box" id="error-box">
+      <p>✕ SYSTEM ERROR: <span id="error-msg">Connection failure.</span></p>
+      <small>Data shown may be stale. Check that the data server is running on port 8000.</small>
+    </div>
+
+    <!-- Stats cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Patients</div>
+        <div class="stat-value" id="stat-total">—</div>
+        <div class="stat-sub">registered</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-label">Dead</div>
+        <div class="stat-value" id="stat-dead">—</div>
+        <div class="stat-sub">from nurses</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">Total Payment</div>
+        <div class="stat-value" id="stat-payment">—</div>
+        <div class="stat-sub">units collected</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Male</div>
+        <div class="stat-value" id="stat-male">—</div>
+        <div class="stat-sub">patients</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Female</div>
+        <div class="stat-value" id="stat-female">—</div>
+        <div class="stat-sub">patients</div>
+      </div>
+    </div>
+
+    <!-- Patient table -->
     <div class="table-wrap">
       <div class="table-header">
-        <span><svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor"><circle cx="50" cy="50" r="8"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/></svg> Patient Registry — Radiation Exposure Cases</span>
-        <span class="count">0 records</span>
+        <span>
+          <svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor" style="vertical-align:middle;margin-right:6px">
+            <circle cx="50" cy="50" r="8"/>
+            <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/>
+            <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/>
+            <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/>
+          </svg>
+          Patient Registry
+        </span>
+        <span class="count" id="record-count">0 records</span>
       </div>
-      <div class="empty">— No records found —<br><small style="font-size:11px;margin-top:8px;display:block">The registry is empty or the server returned no data.</small></div>
+      <div id="table-body-wrap">
+        <div class="loading">— Awaiting data —</div>
+      </div>
     </div>
+
     <footer>
-      <span><svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor"><circle cx="50" cy="50" r="8"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/><path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/></svg> Pripyat Medical Complex · Classified Level 4</span>
-      <span>Last updated: <span class="ts">10:06:49</span></span>
+      <span>
+        <svg viewBox="0 0 100 100" class="rad-icon" fill="currentColor" style="vertical-align:middle;margin-right:4px">
+          <circle cx="50" cy="50" r="8"/>
+          <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z"/>
+          <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(120 50 50)"/>
+          <path d="M50 42 L35 16 A35 35 0 0 1 65 16 Z" transform="rotate(240 50 50)"/>
+        </svg>
+        Pripyat Medical Complex · Classified Level 4
+      </span>
+      <span>Last updated: <span class="ts" id="footer-ts">--:--:--</span></span>
     </footer>
   </main>
+
+  <script>
+    // ── helpers ──────────────────────────────────────────────────────────────
+    function now() {
+      return new Date().toLocaleTimeString('en-GB', { hour12: false });
+    }
+
+    function sexBadge(sex) {
+      if (!sex) return '<span class="badge badge-t">—</span>';
+      const s = sex.toLowerCase();
+      if (s === 'm' || s === 'male')   return '<span class="badge badge-m">M</span>';
+      if (s === 'f' || s === 'female') return '<span class="badge badge-f">F</span>';
+      return `<span class="badge badge-t">${sex}</span>`;
+    }
+
+    function stateClass(state) {
+      if (!state) return 'state-other';
+      const s = state.toLowerCase();
+      if (s.includes('crit') || s.includes('dead') || s.includes('danger')) return 'state-critical';
+      if (s.includes('stab') || s.includes('ok') || s.includes('good'))    return 'state-stable';
+      return 'state-other';
+    }
+
+    // ── render ────────────────────────────────────────────────────────────────
+    function renderPatients(data) {
+      const patients = data.patients || [];
+      const stats    = data.stats    || {};
+
+      // update header status
+      document.getElementById('status-dot').classList.remove('offline');
+      document.getElementById('status-text').textContent = 'LIVE';
+      const t = now();
+      document.getElementById('snapshot-time').textContent = 'SNAPSHOT ' + t;
+      document.getElementById('footer-ts').textContent = t;
+
+      // stat cards
+      document.getElementById('stat-total').textContent   = stats.total_patients ?? patients.length;
+      document.getElementById('stat-dead').textContent    = stats.total_dead      ?? '—';
+      document.getElementById('stat-payment').textContent = stats.total_payment   ?? '—';
+      document.getElementById('stat-male').textContent    = stats.male_count      ?? '—';
+      document.getElementById('stat-female').textContent  = stats.female_count    ?? '—';
+
+      document.getElementById('record-count').textContent = patients.length + ' record' + (patients.length !== 1 ? 's' : '');
+
+      if (patients.length === 0) {
+        document.getElementById('table-body-wrap').innerHTML =
+          '<div class="empty">— No records found —<br><small style="font-size:11px;margin-top:8px;display:block">The registry is empty or the server returned no data.</small></div>';
+        return;
+      }
+
+      // build table — columns: id | name | age | sex | disease | state | payment | nurse
+      let html = `
+        <table>
+          <thead>
+            <tr>
+              <th>#ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Sex</th>
+              <th>Disease</th>
+              <th>State</th>
+              <th>Payment</th>
+              <th>Nurse ID</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+      for (const p of patients) {
+        html += `
+            <tr>
+              <td class="patient-num">P-${String(p.id).padStart(4,'0')}</td>
+              <td>${p.name ?? '—'}</td>
+              <td>${p.age  ?? '—'}</td>
+              <td>${sexBadge(p.sex)}</td>
+              <td class="state-other">${p.disease ?? '—'}</td>
+              <td class="${stateClass(p.state)}">${p.state ?? '—'}</td>
+              <td class="payment-col">${p.payment != null ? p.payment : '—'}</td>
+              <td class="state-other">${p.nurse ?? '—'}</td>
+            </tr>`;
+      }
+
+      html += '</tbody></table>';
+      document.getElementById('table-body-wrap').innerHTML = html;
+    }
+
+    // ── fetch ─────────────────────────────────────────────────────────────────
+    async function loadData() {
+      try {
+        const res  = await fetch('http://localhost:8000/patients');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        renderPatients(data);
+      } catch (err) {
+        document.getElementById('error-box').style.display = 'block';
+        document.getElementById('error-msg').textContent   = err.message;
+        document.getElementById('table-body-wrap').innerHTML =
+          '<div class="empty">— No records found —<br><small style="font-size:11px;margin-top:8px;display:block">The registry is empty or the server returned no data.</small></div>';
+      }
+    }
+
+    loadData();
+    setInterval(loadData, 10000); // refresh every 10 s
+  </script>
 </body>
 </html>

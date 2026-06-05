@@ -14,17 +14,18 @@ class handler(SimpleHTTPRequestHandler):
             with open("index.html","r",encoding="utf_8")as p:
                 html=p.read()
             self.wfile.write(html.encode())
-        elif parsed=="/records":
+        elif parsed=="/patients":
             self.send_response(200)
             self.send_header("Content-type","application/json")
             self.send_header("Cache-Control","no-Cache,must-revalidate")
+            self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             with open("data.json","r",encoding="utf_8")as f:
                 data=json.load(f)
             self.wfile.write(json.dumps(data).encode())
 
 
-def run_tha_server_twin(port=8080):
+def run_tha_server_twin(port=8000):
     server_adress=("",port)
     httpd=HTTPServer(server_adress,handler)
     print(f"the server is running in god knows where.(http://localhost:{port})")

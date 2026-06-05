@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include "smtp.h"
 #include "server.h"
+#include <QTimer>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -21,6 +22,7 @@ public:
     database& db;
     smtp& sp;
     server& sv;
+    QTimer* timer;
     explicit MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *parent = nullptr);
     ~MainWindow() override;
 

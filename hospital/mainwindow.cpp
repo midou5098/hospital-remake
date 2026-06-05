@@ -161,7 +161,12 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
                 ui->message_2->setText("something went wrong , check your data!");
             }
     }});
-
+    timer= new QTimer(this);
+    connect(timer,&QTimer::timeout,this,[this]{
+        sv.fetch();
+        sv.update();
+    });
+    timer->start(5000);
     connect(ui->pull_database,&QPushButton::clicked,this,[this](){
         if(db.opening()){
             ui->message->setText("database imported successfully!");
@@ -169,9 +174,9 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
             ui->message->setText("import failed");
         }
         if(db.pulled){
-            sv.fetch();
-            sv.update();
-        }
+                sv.fetch();
+                sv.update();
+            }
 
 
     });
