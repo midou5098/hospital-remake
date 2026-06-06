@@ -9,6 +9,20 @@ QString smtp::sendcommand(QSslSocket* socket,   const QString& cmd){
     return QString::fromUtf8(socket->readAll());
 
 }
+
+
+smtp::smtp(void) {
+    const std::string key="API_KEY";
+    std::ifstream envFile("/home/bro/my-creations/hospital-remake/hospital/m.env");
+    std::string line;
+    while (std::getline(envFile, line)) {
+        if (line.find(key+ "=") == 0) {
+            password=QString::fromStdString(line.substr(key.length() + 1));
+            std::cout<<password.length();
+
+        }
+    }
+}
 int smtp::resp(QString response){
     return response.left(3).toInt();
 }
@@ -109,5 +123,3 @@ bool smtp::send(const QString& to,const QString& obj,const QString& body){
 
 
 
-
-void disconnect();

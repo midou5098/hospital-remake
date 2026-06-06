@@ -6,7 +6,8 @@
 class smtp{
 public:
     QSslSocket socket;
-    const QString password="uzxciblcvimzemkr";
+     QString password;
+    smtp();
     const QString user="midouamdouni4@gmail.com";
     bool connect(const QString& host,int port);
     bool auth(const QString* user,const QString* password);
@@ -14,6 +15,7 @@ public:
     void disconnect();
     QString sendcommand(QSslSocket* socket,   const QString& cmd);
     int resp(QString response);
+    void getapi(void);
 };
 
 #endif // SMTP_H
