@@ -289,7 +289,34 @@ bool database::add_count(int id ,int  state){
 
 
 
+bool database::new_nur(int id ){
+    sqlite3_stmt* stmt;
+    const char* sql="UPDATE doctors SET nurses_count=nurses_count+1 WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_DONE){
+        sqlite3_finalize(stmt);
+        return true;
 
+
+    }
+    sqlite3_finalize(stmt);
+    return false;
+}
+bool database::new_pat(int id ){
+    sqlite3_stmt* stmt;
+    const char* sql="UPDATE nurses SET patients_count=patients_count+1 WHERE id=?;";
+    sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
+    sqlite3_bind_int(stmt,1,id);
+    if(sqlite3_step(stmt)==SQLITE_DONE){
+        sqlite3_finalize(stmt);
+        return true;
+
+
+    }
+    sqlite3_finalize(stmt);
+    return false;
+}
 
 
 

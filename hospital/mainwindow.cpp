@@ -205,7 +205,7 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
             temp.age=ui->add_nurse_age->text().toInt();
             temp.supervisor=ui->add_nurse_super->text().toInt();
             temp.sex=ui->add_nurse_sex->text().toStdString();
-            if(db.add_nurse(temp)){
+            if(db.add_nurse(temp) && db.new_nur(ui->add_nurse_super->text().toInt())){
                 ui->message_3->setText("nurse added !");
             }else{
                 ui->message_3->setText("something went wrong , check your data!");
@@ -233,7 +233,7 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
             temp.nurse=ui->add_patient_nurse->text().toInt();
             temp.sex=ui->add_patient_sex->text().toStdString();
             temp.state=ui->add_patient_state->text().toStdString();
-            if(db.add_patient(temp)){
+            if(db.add_patient(temp) && db.new_pat(ui->add_patient_nurse->text().toInt())){
                 ui->message_4->setText("patient added !");
             }else{
                 ui->message_4->setText("something went wrong , check your data!");
