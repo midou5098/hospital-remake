@@ -20,6 +20,7 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
             backbuts->addButton(button);
         }
     }
+    backbuts->addButton(ui->back);
     for(int i=1;i<20;i++){
         QString name=QString("message_%1").arg(i);
         QLabel *lab=this->findChild<QLabel*>(name);
@@ -62,21 +63,32 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
 
 
     connect(ui->ld,&QPushButton::clicked,this,[this]() {
-        std::vector<doctor> temp=db.list_doctors();
-        std::cout<< "docvec has been loaded";
-        load_list_doctors(*ui->doctor_list,temp);
+        if(db.updated){
+            std::vector<doctor> temp=db.list_doctors();
+            std::cout<< "docvec has been loaded";
+            load_list_doctors(*ui->doctor_list,temp);
+            db.updated=false;
+        }
         switchpg(9);
     });
 
     connect(ui->ln,&QPushButton::clicked,this,[this]() {
-        std::vector<nurse> temp=db.list_nurses();
-        load_list_nurses(*ui->nurse_list,temp);
+
+        if(db.updated){
+            std::vector<nurse> temp=db.list_nurses();
+            load_list_nurses(*ui->nurse_list,temp);
+            db.updated=false;
+        }
         switchpg(10);
     });
 
 
     connect(ui->lp,&QPushButton::clicked,this,[this]() {
-        load_list_patients(*ui->patient_list,db.list_patients());
+
+        if(db.updated){
+            load_list_patients(*ui->patient_list,db.list_patients());
+            db.updated=false;
+        }
         switchpg(11);
     });
 

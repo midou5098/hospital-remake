@@ -160,6 +160,7 @@ bool database::remove_doctor(int id){
     int res=sqlite3_step(stmt);
     if(res!=0){
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
 
     }else {
@@ -179,6 +180,7 @@ bool database::remove_nurse(int id){
     int res=sqlite3_step(stmt);
     if(res!=0){
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
 
     }else {
@@ -197,6 +199,7 @@ bool database::remove_patient(int id){
     sqlite3_bind_int(stmt,1,id);
     int res=sqlite3_step(stmt);
     if(res!=0){
+        updated=true;
         sqlite3_finalize(stmt);
         return true;
 
@@ -226,6 +229,7 @@ bool database::transfer_nurses(int old,int newi){
     sqlite3_bind_int(stmt,2,old);
     if(sqlite3_step(stmt)==SQLITE_DONE){
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
     }else{
         sqlite3_finalize(stmt);
@@ -244,6 +248,7 @@ bool database::transfer_patients(int old,int newi){
     if(sqlite3_step(stmt)==SQLITE_DONE){
         sqlite3_finalize(stmt);
         return true;
+        updated=true;
     }else{
         sqlite3_finalize(stmt);
         return true;
@@ -359,6 +364,7 @@ bool database::add_doctor(doctor doctor){
     if (sqlite3_step(stmt) != SQLITE_DONE) {
         //std::cout << "Step failed: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_finalize(stmt);
+        updated=true;
         return false;
     }
     sqlite3_finalize(stmt);
@@ -381,6 +387,7 @@ bool database::add_nurse(nurse nurse){
 
     if (sqlite3_step(stmt)==SQLITE_DONE) {
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
     }
     sqlite3_finalize(stmt);
@@ -405,6 +412,7 @@ bool database::add_patient(patient patient){
     if (result != SQLITE_DONE) {
         return false;
     }
+    updated=true;
     return true;
 }
 
@@ -658,6 +666,7 @@ bool database::modify_doctor(int id,doctor newd){
     sqlite3_bind_int(stmt,5,id);
     if(sqlite3_step(stmt)!=0){
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
     }else{
         sqlite3_finalize(stmt);
@@ -679,6 +688,7 @@ bool database::modify_nurse(int id,nurse newd){
     sqlite3_bind_int(stmt,4,id);
     if(sqlite3_step(stmt)!=0){
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
     }else{
         sqlite3_finalize(stmt);
@@ -702,6 +712,7 @@ bool database::modify_patient(int id,patient newd){
     sqlite3_bind_int(stmt,7,id);
     if(sqlite3_step(stmt)!=0){
         sqlite3_finalize(stmt);
+        updated=true;
         return true;
     }else{
         sqlite3_finalize(stmt);

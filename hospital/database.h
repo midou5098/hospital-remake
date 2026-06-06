@@ -7,6 +7,7 @@ private:
     sqlite3* db,*adm;
 
 public:
+    bool updated=true;
     bool pulled=false,nurse_found=false,doctor_found=false,patient_found=false;
     database();
 

@@ -23,6 +23,7 @@ public:
     smtp& sp;
     server& sv;
     QTimer* timer;
+
     explicit MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *parent = nullptr);
     ~MainWindow() override;
 
