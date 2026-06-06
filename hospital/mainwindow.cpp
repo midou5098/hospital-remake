@@ -64,6 +64,7 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
 
     connect(ui->ld,&QPushButton::clicked,this,[this]() {
         if(db.updated){
+            ui->doctor_list->setRowCount(0);
             std::vector<doctor> temp=db.list_doctors();
             std::cout<< "docvec has been loaded";
             load_list_doctors(*ui->doctor_list,temp);
@@ -75,6 +76,7 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
     connect(ui->ln,&QPushButton::clicked,this,[this]() {
 
         if(db.updated){
+            ui->doctor_list->setRowCount(0);
             std::vector<nurse> temp=db.list_nurses();
             load_list_nurses(*ui->nurse_list,temp);
             db.updated=false;
@@ -86,6 +88,7 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
     connect(ui->lp,&QPushButton::clicked,this,[this]() {
 
         if(db.updated){
+            ui->patient_list->setRowCount(0);
             load_list_patients(*ui->patient_list,db.list_patients());
             db.updated=false;
         }

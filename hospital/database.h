@@ -18,6 +18,8 @@ public:
 
 
     bool add_count(int id ,int  state);
+    bool new_nur(int id );
+    bool new_pat(int id );
     bool check_id(int id);
     admin get_admin(int id);
 
