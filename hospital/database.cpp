@@ -68,8 +68,10 @@ bool database::check_id(int id){
     sqlite3_prepare_v2(adm,sql,-1,&stmt,nullptr);
     sqlite3_bind_int(stmt,1,id);
     if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
         return true;
     }
+    sqlite3_finalize(stmt);
     return false;
 
 
@@ -91,7 +93,7 @@ admin database::get_admin(int id){
     temp.id=sqlite3_column_int(stmt,0);
     temp.passwd=reinterpret_cast<const char*>(sqlite3_column_text(stmt,1));
     temp.gmail=reinterpret_cast<const char*>(sqlite3_column_text(stmt,2));
-
+    sqlite3_finalize(stmt);
     return temp;
 }
 
@@ -437,8 +439,10 @@ bool database::add_patient(patient patient){
     int result = sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     if (result != SQLITE_DONE) {
+        sqlite3_finalize(stmt);
         return false;
     }
+    sqlite3_finalize(stmt);
     updated=true;
     return true;
 }
@@ -459,6 +463,7 @@ int database::countpat(){
     int tot=0;
     sqlite3_step(stmt);
     tot=sqlite3_column_int(stmt,0);
+    sqlite3_finalize(stmt);
     return tot;
 
 }
@@ -472,6 +477,7 @@ int database::totcrit(){
             tot+=1;
         }
     }
+    sqlite3_finalize(stmt);
     return tot;
 
 }
@@ -483,7 +489,7 @@ int database::totdead(){
     while(sqlite3_step(stmt)==SQLITE_ROW){
         tot+=tot=sqlite3_column_int(stmt,7);
     }
-
+    sqlite3_finalize(stmt);
     return tot;
 
 }
@@ -515,8 +521,8 @@ doctor database::search_doctor(int id,bool& found){
         temp.id=sqlite3_column_int(stmt, 0),
         temp.name=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)),
         temp.age=sqlite3_column_int(stmt, 2),
-        temp.level=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3)),
-        temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)),
+        temp.level=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)),
+        temp.sex=reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3)),
         temp.months_left=sqlite3_column_int(stmt, 5);
         temp.nurse_count=sqlite3_column_int(stmt, 6);
 
@@ -605,7 +611,7 @@ std::vector<doctor> database::list_doctors(){
         temp.nurse_count=sqlite3_column_int(stmt, 6);
         docvec.push_back(temp);
     }
-
+    sqlite3_finalize(stmt);
     return docvec;
 }
 
@@ -623,6 +629,7 @@ std::vector<nurse> database::list_nurses(){
         temp.patients_count=sqlite3_column_int(stmt, 5);
         nursevec.push_back(temp);
     }
+    sqlite3_finalize(stmt);
     return nursevec;
 }
 
@@ -642,6 +649,7 @@ std::vector<patient> database::list_patients(){
         temp.nurse=sqlite3_column_int(stmt, 7);
         patvec.push_back(temp);
     }
+    sqlite3_finalize(stmt);
     return patvec;
 }
 
@@ -659,8 +667,10 @@ int database::count_nurses(int id){
     sql="SELECT COUNT(*) FROM nurses WHERE supervisor=?;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
         return sqlite3_column_int(stmt,0);
     }else{
+        sqlite3_finalize(stmt);
         return -1;
     }
 }
@@ -671,10 +681,13 @@ int database::count_patients(int id){
     sql="SELECT COUNT(*) FROM patients WHERE nurse=?;";
     sqlite3_prepare_v2(db,sql,-1,&stmt,nullptr);
     if(sqlite3_step(stmt)==SQLITE_ROW){
+        sqlite3_finalize(stmt);
         return sqlite3_column_int(stmt,0);
     }else{
+        sqlite3_finalize(stmt);
         return -1;
     }
+
 }
 
 //============================modifying
