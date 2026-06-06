@@ -449,15 +449,16 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
     connect(ui->search_doc,&QPushButton::clicked,this,[this]() {
         doctor temp;
         if(ui->search_doctor_id->text()==""){
-            ui->message_16->setText("enter a doctor id to search");
+            ui->message_17->setText("enter a doctor id to search");
         }else{
-            temp=db.search_doctor(ui->search_nurse_id->text().toInt(),db.doctor_found);
-            if(db.nurse_found){
-                load_stab_doctor(*ui->search_pat_tab,temp);
+            temp=db.search_doctor(ui->search_doctor_id->text().toInt(),db.doctor_found);
+            if(db.doctor_found){
+                ui->search_doc_tab->setRowCount(0);
+                load_stab_doctor(*ui->search_doc_tab,temp);
+                ui->message_17->setText("doctor found");
             }else{
-                ui->message_18->setText("doctor not found");
+                ui->message_17->setText("doctor not found");
             }
-//std::cout<< "doc has been loaded";
 }});
 
 //<===================================searching nurse --------------->
@@ -467,13 +468,13 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
         }else{
             nurse temp=db.search_nurse(ui->search_nurse_id->text().toInt(),db.nurse_found);
             if(db.nurse_found){
+                ui->search_nur_tab->setRowCount(0);
                 load_stab_nurse(*ui->search_nur_tab,temp);
+                ui->message_18->setText("nurse found");
             }else{
                 ui->message_18->setText("nurse not found");
             }
         //std::cout<< "dochas been loaded";
-
-
     }});
 
 
@@ -489,7 +490,9 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
 
         }
         if(db.patient_found){
+            ui->search_pat_tab->setRowCount(0);
             load_stab_patient(*ui->search_pat_tab,temp);
+            ui->message_19->setText("patient found");
         }else{
             ui->message_19->setText("patient not found");
         }

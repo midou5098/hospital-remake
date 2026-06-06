@@ -1,62 +1,62 @@
 {
   "patients": [
     {
-      "age": 1124581888,
+      "age": 981581312,
       "disease": 1,
       "id": 2,
       "name": "alan",
       "nurse": 2,
-      "pay ": 137656320,
+      "pay ": 507801504,
       "sex": "",
       "state": "state"
     },
     {
-      "age": 1124581888,
+      "age": 981581312,
       "disease": 1,
       "id": 3,
       "name": "alan",
       "nurse": 2,
-      "pay ": 137656320,
+      "pay ": 507801504,
       "sex": "",
       "state": "state"
     },
     {
-      "age": 1124581888,
+      "age": 981581312,
       "disease": 1,
       "id": 4,
       "name": "alan",
       "nurse": 2,
-      "pay ": 137656320,
+      "pay ": 507801504,
       "sex": "",
       "state": "state"
     },
     {
-      "age": 1124581888,
+      "age": 981581312,
       "disease": 1,
       "id": 5,
       "name": "alan",
       "nurse": 2,
-      "pay ": 137656320,
+      "pay ": 507801504,
       "sex": "",
       "state": "state"
     },
     {
-      "age": 1124581888,
+      "age": 981581312,
       "disease": 1,
       "id": 6,
       "name": "max",
       "nurse": 1,
-      "pay ": 137656320,
+      "pay ": 507801504,
       "sex": "",
       "state": "critical"
     },
     {
-      "age": 1124581888,
+      "age": 981581312,
       "disease": 1,
       "id": 7,
       "name": "bart",
       "nurse": 1,
-      "pay ": 137656320,
+      "pay ": 507801504,
       "sex": "",
       "state": "critical"
     }
@@ -65,8 +65,8 @@
     "alert_level": "stable bitch",
     "critical": 0,
     "deceased": 0,
-    "rad_bar_pct": 15403834.26,
-    "radiation_rem": 136518054.0,
+    "rad_bar_pct": 16497604.92,
+    "radiation_rem": 71988538.6,
     "timestamp": "1222:12:12",
     "total_patients": 6,
     "ward": "bitch"
