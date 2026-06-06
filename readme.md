@@ -336,4 +336,5 @@ This tells GitHub Linguist to treat the bundled `nlohmann` library as vendored c
 
 ## Why did I create this
 
-<!-- Write your personal explanation here. -->
+Qt is well known for professional apps developement so i had to learn it , my first project in it so i know it's a bit simple but 
+i planned more complex project in the future.repo closed in 6 juin 2026
