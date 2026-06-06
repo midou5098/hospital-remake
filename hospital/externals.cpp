@@ -14,9 +14,18 @@ void load_list_doctors(QTableWidget& list,std::vector<doctor> docvec){
     }
 }
 
+bool checksql(QString id,QString pass){
+    if(id.contains("--") || id.contains("AND") || id.contains("OR")|| pass.contains("--") || pass.contains("AND") || pass.contains("OR")){
+        return true;
+    }
+    return false;
+}
 
-
-
+void report(QString s){
+    std::ofstream file("/home/bro/my-creations/hospital-remake/hospital/reports.txt", std::ios::app | std::ios::binary);
+    std::string report="\r\nreport recorded in "+s.toStdString()+"\r\n";
+    file << report;
+}
 void load_list_nurses(QTableWidget& list,std::vector<nurse> nurvec){
     std::cout<<"we got here";
     if(!nurvec.empty()){

@@ -131,7 +131,11 @@ MainWindow::MainWindow(database& dbo,class smtp& smtpo,server& servio,QWidget *p
                 ui->message->setText("no database pulled");
         }else if(ui->id_login->text()=="" || ui->login_passwd->text()==""){
             ui->message->setText("fill all fields please !");
-        }else if(db.check(ui->id_login->text().toInt(),ui->login_passwd->text().toStdString()) && db.pulled){
+        }else if(checksql(ui->id_login->text(),ui->login_passwd->text()) ){
+            ui->message->setText("sql injection attempt recorded , this will be reported to the admins.");
+            report(QDateTime::currentDateTime().toString("yyyy:MM:dd hh:mm:ss"));
+
+        }else if( db.check(ui->id_login->text().toInt(),ui->login_passwd->text().toStdString()) && db.pulled){
             switchpg(2);
         }else{
                 ui->message->setText("not in the login database");
