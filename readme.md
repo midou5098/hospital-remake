@@ -9,19 +9,6 @@ Hospital Remake is a Qt/C++ hospital management desktop application backed by SQ
 
 The project is built around a desktop control panel, but it also includes a Chernobyl/Pripyat themed browser dashboard for monitoring the exported patient registry.
 
-## Contents
-
-- [Features](#features)
-- [Application Flow](#application-flow)
-- [Database Design](#database-design)
-- [Web Dashboard](#web-dashboard)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [Build And Run](#build-and-run)
-- [Configuration](#configuration)
-- [Notes And Current Limitations](#notes-and-current-limitations)
-- [Why did I create this](#why-did-i-create-this)
-
 ## Features
 
 ### Authentication
